@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing SignupForm component should render as expected when there is an error 1`] = `
+<section
+  id="register"
+>
+  <Dimmer
+    active={false}
+    page={true}
+  >
+    <Loader
+      size="medium"
+    />
+  </Dimmer>
+  <div
+    className="container"
+  >
+    <div
+      className="message error-message"
+    >
+      error
+    </div>
+    <div
+      className="form"
+    >
+      <div
+        className="form-icon-container"
+      >
+        <div
+          className="center form-icon blue"
+        >
+          <i
+            className="icon ion-edit"
+          />
+        </div>
+      </div>
+      <h1
+        className="center"
+      >
+        Create Account
+      </h1>
+      <form
+        id="signupForm"
+        onSubmit={[Function]}
+      >
+        <input
+          className="form-input"
+          id="name"
+          name="fullname"
+          onChange={[Function]}
+          placeholder="Full Name"
+          required={true}
+          type="text"
+        />
+        <input
+          className="form-input"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Email"
+          required={true}
+          type="text"
+          value=""
+        />
+        <input
+          className="form-input"
+          id="username"
+          name="username"
+          onChange={[Function]}
+          placeholder="Username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <input
+          className="form-input"
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <input
+          className="form-input btn btn-primary"
+          id="submit-btn"
+          type="submit"
+          value="Create Account"
+        />
+      </form>
+      <div
+        className="form-footer center"
+      >
+        <p>
+          Already a member?  
+          <Link
+            className="blue"
+            replace={false}
+            to="/login"
+          >
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`testing SignupForm component should render as expected when there is no error 1`] = `
+<section
+  id="register"
+>
+  <Dimmer
+    active={false}
+    page={true}
+  >
+    <Loader
+      size="medium"
+    />
+  </Dimmer>
+  <div
+    className="container"
+  >
+    <div
+      className="form"
+    >
+      <div
+        className="form-icon-container"
+      >
+        <div
+          className="center form-icon blue"
+        >
+          <i
+            className="icon ion-edit"
+          />
+        </div>
+      </div>
+      <h1
+        className="center"
+      >
+        Create Account
+      </h1>
+      <form
+        id="signupForm"
+        onSubmit={[Function]}
+      >
+        <input
+          className="form-input"
+          id="name"
+          name="fullname"
+          onChange={[Function]}
+          placeholder="Full Name"
+          required={true}
+          type="text"
+        />
+        <input
+          className="form-input"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Email"
+          required={true}
+          type="text"
+          value=""
+        />
+        <input
+          className="form-input"
+          id="username"
+          name="username"
+          onChange={[Function]}
+          placeholder="Username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <input
+          className="form-input"
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <input
+          className="form-input btn btn-primary"
+          id="submit-btn"
+          type="submit"
+          value="Create Account"
+        />
+      </form>
+      <div
+        className="form-footer center"
+      >
+        <p>
+          Already a member?  
+          <Link
+            className="blue"
+            replace={false}
+            to="/login"
+          >
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;
