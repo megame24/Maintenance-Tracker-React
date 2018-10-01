@@ -9,7 +9,10 @@
     "build": "webpack --mode production --env.mode=production",
     "start": "node server.js",
     "heroku-postbuild": "npm run build",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --coverage --watch",
+    "update-snapshot": "jest --updateSnapshot",
+    "coverage": "NODE_ENV=test jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -42,6 +45,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.19",
+    "coveralls": "^3.0.2",
     "css-loader": "^1.0.0",
     "dotenv-webpack": "^1.5.7",
     "enzyme": "^3.5.1",
