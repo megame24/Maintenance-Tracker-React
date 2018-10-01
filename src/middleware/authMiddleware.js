@@ -15,13 +15,12 @@ const authMiddleware = () => next => (action) => {
     action.payload.token = token;
     localStorage.setItem('token', token);
     const decoded = decode(token);
-    const user = JSON.stringify({
+    action.payload.user = {
       id: decoded.id,
       fullname: decoded.fullname,
       username: decoded.username,
       role: decoded.role,
-    });
-    action.payload.user = user;
+    };
   }
   if (action.type === types.LOGOUT) {
     localStorage.removeItem('token');

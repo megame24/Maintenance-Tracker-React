@@ -18,8 +18,8 @@ export default (state = initialState, action = {}) => {
   case PERSIST_LOGIN:
     return {
       ...state,
-      token: action.payload.token,
       user: action.payload.user,
+      token: action.payload.token,
     };
   case `${SIGN_UP}_LOADING`:
     return {
@@ -34,8 +34,8 @@ export default (state = initialState, action = {}) => {
         message: '',
         response: {},
       },
-      token: action.payload.token,
       user: action.payload.user,
+      token: action.payload.token,
     };
   case `${SIGN_UP}_FAILURE`:
     return {
@@ -60,8 +60,8 @@ export default (state = initialState, action = {}) => {
         message: '',
         response: {},
       },
-      token: action.payload.token,
       user: action.payload.user,
+      token: action.payload.token,
     };
   case `${LOGIN}_FAILURE`:
     return {

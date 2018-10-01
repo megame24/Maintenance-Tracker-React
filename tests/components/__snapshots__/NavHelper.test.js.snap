@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AdminNav component should render as expected 1`] = `
+<ul
+  className="right-menu not-mobile not-mobile-right"
+>
+  <li
+    className="admin"
+  >
+    <div>
+      <a
+        className="nav-item"
+        href="#"
+        onClick={[Function]}
+      >
+        <span
+          id="display-username"
+        >
+          Welcome  
+          username
+        </span>
+        <span>
+          <i
+            className="icon ion-android-arrow-dropdown"
+          />
+        </span>
+      </a>
+    </div>
+    <div
+      className="drop-down-menu undefined"
+    >
+      <Link
+        replace={false}
+        to="/dashboard"
+      >
+        Dashboard
+      </Link>
+      <a
+        href="#"
+        id="logout"
+      >
+        Logout
+      </a>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`Testing GuestNav component should render as expected 1`] = `
+<ul
+  className="right-menu not-mobile not-mobile-right"
+>
+  <li>
+    <a
+      className="nav-item"
+      href="#"
+    >
+      Login
+    </a>
+  </li>
+  <li>
+    <a
+      className="nav-item"
+      href="/signup.html"
+    >
+      Sign Up
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Testing NavHeader component should render as expected 1`] = `
+<div
+  className="nav-header nav-header-shadow not-mobile-left"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    M-Tracker
+  </Link>
+  <span
+    className="mobile toggle-menu"
+    onClick={[Function]}
+  >
+    <i
+      className="icon ion-android-menu"
+    />
+  </span>
+  <div
+    className="clearfix"
+  />
+</div>
+`;
+
+exports[`Testing UsersNav component should render as expected 1`] = `
+<ul
+  className="right-menu not-mobile not-mobile-right"
+>
+  <li
+    className="request"
+    key="request"
+  >
+    <div>
+      <a
+        className="nav-item"
+        href="#"
+        onClick={[Function]}
+      >
+        Requests
+        <span>
+          <i
+            className="icon ion-android-arrow-dropdown"
+          />
+        </span>
+      </a>
+    </div>
+    <div
+      className="drop-down-menu undefined"
+    >
+      <Link
+        replace={false}
+        to="/make-request"
+      >
+        Make Request
+      </Link>
+      <Link
+        replace={false}
+        to="/view-requests"
+      >
+        View Requests
+      </Link>
+    </div>
+  </li>
+  <li
+    className="user"
+    key="user"
+  >
+    <div>
+      <a
+        className="nav-item"
+        href="#"
+        onClick={[Function]}
+      >
+        <span
+          id="display-username"
+        >
+          Welcome  
+          username
+        </span>
+        <span>
+          <i
+            className="icon ion-android-arrow-dropdown"
+          />
+        </span>
+      </a>
+    </div>
+    <div
+      className="drop-down-menu undefined"
+    >
+      <a
+        href="#"
+        id="logout"
+      >
+        Logout
+      </a>
+    </div>
+  </li>
+</ul>
+`;

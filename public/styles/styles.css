@@ -228,6 +228,9 @@ tbody tr:nth-child(odd) {
   nav {
     background-color: #fff;
   }
+  nav a:hover {
+    color: inherit;
+  }
   .nav-header {
     padding: 20px 15px;
     background-color: #00bcd4;
@@ -279,7 +282,7 @@ tbody tr:nth-child(odd) {
     box-shadow: 0 4px 2px -2px #c0c0c0;
     color: #fff;
   }
-  nav a {
+  nav a, nav a:hover {
     color: #fff;
   }
   nav ul {
@@ -345,6 +348,7 @@ tbody tr:nth-child(odd) {
     border-bottom: 1px solid #e7e7e7;
   }
   .drop-down-menu a:hover:not(.disable-highlight) {
+    color: #545454;
     background-color: rgb(240, 240, 240);
   }
 }
