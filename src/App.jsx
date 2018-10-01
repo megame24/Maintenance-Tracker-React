@@ -1,8 +1,9 @@
 import React from 'react';
+import Main from './views/Main';
 
 const App = () => (
   <div>
-    <h1>Welcome to Maintenance Tracker</h1>
+    <Main />
   </div>
 );
 
