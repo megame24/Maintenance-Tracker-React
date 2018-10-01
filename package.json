@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/megame24/Maintenance-Tracker-React#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-eslint": "^9.0.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-3": "^6.24.1",
