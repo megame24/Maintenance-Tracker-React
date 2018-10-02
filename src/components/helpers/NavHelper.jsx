@@ -10,7 +10,6 @@ export const UsersNav = ({
       <div>
         <a
           onClick={() => toggleDropDown('request')}
-          href="#"
           className="nav-item"
         >
           Requests
@@ -20,14 +19,13 @@ export const UsersNav = ({
         </a>
       </div>
       <div className={`drop-down-menu ${dropDown.request}`}>
-        <Link to="/make-request">Make Request</Link>
+        <Link to="/create-request">Create Request</Link>
         <Link to="/view-requests">View Requests</Link>
       </div>
     </li>
     <li key="user" className="user">
       <div>
         <a
-          href="#"
           onClick={() => toggleDropDown('users')}
           className="nav-item"
         >
@@ -42,7 +40,7 @@ export const UsersNav = ({
         </a>
       </div>
       <div className={`drop-down-menu ${dropDown.users}`}>
-        <a id="logout" href="#" onClick={logout}>Logout</a>
+        <a id="logout" onClick={logout}>Logout</a>
       </div>
     </li>
   </ul>
@@ -68,7 +66,6 @@ export const AdminNav = ({
       <div>
         <a
           onClick={() => toggleDropDown('admin')}
-          href="#"
           className="nav-item"
         >
           <span id="display-username">
@@ -83,7 +80,7 @@ export const AdminNav = ({
       </div>
       <div className={`drop-down-menu ${dropDown.admin}`}>
         <Link to="/dashboard">Dashboard</Link>
-        <a id="logout" href="#" onClick={logout}>Logout</a>
+        <a id="logout" onClick={logout}>Logout</a>
       </div>
     </li>
   </ul>

@@ -31,6 +31,27 @@ export class Nav extends React.Component {
   }
 
   /**
+   * component did mount
+   * @returns {null} null
+   */
+  componentDidMount() {
+    const { history } = this.props;
+    history.listen(() => {
+      this.setState({
+        toggleMenuOptions: {
+          navHeaderShadow: 'nav-header-shadow',
+          notMobile: 'not-mobile',
+        },
+        dropDown: {
+          request: 'hide',
+          users: 'hide',
+          admin: 'hide',
+        },
+      });
+    });
+  }
+
+  /**
    * logout
    * @returns {undefined}
    */
@@ -125,6 +146,9 @@ export class Nav extends React.Component {
 }
 
 Nav.propTypes = {
+  history: PropTypes.shape({
+    listen: PropTypes.func.isRequired
+  }).isRequired,
   logout: PropTypes.func.isRequired,
   token: PropTypes.string,
   username: PropTypes.string,

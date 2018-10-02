@@ -10,7 +10,6 @@ exports[`Testing AdminNav component should render as expected 1`] = `
     <div>
       <a
         className="nav-item"
-        href="#"
         onClick={[Function]}
       >
         <span
@@ -36,7 +35,6 @@ exports[`Testing AdminNav component should render as expected 1`] = `
         Dashboard
       </Link>
       <a
-        href="#"
         id="logout"
         onClick={[Function]}
       >
@@ -107,7 +105,6 @@ exports[`Testing UsersNav component should render as expected 1`] = `
     <div>
       <a
         className="nav-item"
-        href="#"
         onClick={[Function]}
       >
         Requests
@@ -123,9 +120,9 @@ exports[`Testing UsersNav component should render as expected 1`] = `
     >
       <Link
         replace={false}
-        to="/make-request"
+        to="/create-request"
       >
-        Make Request
+        Create Request
       </Link>
       <Link
         replace={false}
@@ -142,7 +139,6 @@ exports[`Testing UsersNav component should render as expected 1`] = `
     <div>
       <a
         className="nav-item"
-        href="#"
         onClick={[Function]}
       >
         <span
@@ -162,7 +158,6 @@ exports[`Testing UsersNav component should render as expected 1`] = `
       className="drop-down-menu undefined"
     >
       <a
-        href="#"
         id="logout"
         onClick={[Function]}
       >

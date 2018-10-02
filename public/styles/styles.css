@@ -23,6 +23,7 @@ textarea {
 a {
   color: #1a0dab;
   text-decoration: none;
+  cursor: pointer;
 }
 .container {
   padding: 0 15px;

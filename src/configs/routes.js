@@ -3,9 +3,11 @@ import Home from '../views/Home';
 import About from '../views/About';
 import authPages from '../views/auth';
 import routes from '../components/routes';
+import requestPages from '../views/request';
 
-const { GuestRoute } = routes;
+const { GuestRoute, UserRoute } = routes;
 const { Signup, Login } = authPages;
+const { CreateRequest } = requestPages;
 
 export default [
   {
@@ -31,5 +33,11 @@ export default [
     path: '/login',
     component: Login,
     exact: true,
-  }
+  },
+  {
+    type: UserRoute,
+    path: '/create-request',
+    component: CreateRequest,
+    exact: true,
+  },
 ];

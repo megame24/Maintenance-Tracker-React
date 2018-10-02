@@ -9,8 +9,9 @@ import store from './store';
 import '../public/styles/styles.css';
 import types from './actions/actionTypes';
 
-if (localStorage.token) {
-  const token = localStorage.getItem('token');
+
+const token = localStorage.getItem('token');
+if (token && token !== 'undefined') {
   const decoded = decode(token);
   const currentTime = Math.floor(Date.now() / 1000);
   if (currentTime < decoded.exp) {
