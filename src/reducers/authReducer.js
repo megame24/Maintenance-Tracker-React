@@ -1,6 +1,6 @@
 import types from '../actions/actionTypes';
 
-const { SIGN_UP, PERSIST_LOGIN } = types;
+const { SIGN_UP, PERSIST_LOGIN, LOGIN } = types;
 
 export const initialState = {
   isLoading: false,
@@ -38,6 +38,32 @@ export default (state = initialState, action = {}) => {
       user: action.payload.user,
     };
   case `${SIGN_UP}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  case `${LOGIN}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${LOGIN}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      token: action.payload.token,
+      user: action.payload.user,
+    };
+  case `${LOGIN}_FAILURE`:
     return {
       ...state,
       isLoading: false,

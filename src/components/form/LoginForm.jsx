@@ -3,13 +3,13 @@ import { PropTypes } from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const SignupForm = (props) => {
+const LoginForm = (props) => {
   const {
     handleSubmit, formData, handleChange,
     isLoading, errors,
   } = props;
   return (
-    <section id="register">
+    <section id="login">
       <Dimmer
         page
         active={isLoading}
@@ -32,35 +32,15 @@ const SignupForm = (props) => {
             </div>
           </div>
           <h1 className="center">Create Account</h1>
-          <form id="signupForm" onSubmit={handleSubmit}>
+          <form id="LoginForm" onSubmit={handleSubmit}>
             <input
               onChange={handleChange}
-              value={formData.name}
-              className="form-input"
-              name="fullname"
-              type="text"
-              id="name"
-              placeholder="Full Name"
-              required
-            />
-            <input
-              onChange={handleChange}
-              value={formData.email}
+              value={formData.usernameOrEmail}
               className="form-input"
               type="text"
-              name="email"
+              name="usernameOrEmail"
               id="email"
-              placeholder="Email"
-              required
-            />
-            <input
-              onChange={handleChange}
-              value={formData.username}
-              className="form-input"
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              placeholder="Email or Username"
               required
             />
             <input
@@ -77,13 +57,13 @@ const SignupForm = (props) => {
               className="form-input btn btn-primary"
               type="submit"
               id="submit-btn"
-              value="Create Account"
+              value="Login"
             />
           </form>
           <div className="form-footer center">
             <p>
-              Already a member? &nbsp;
-              <Link to="/login" className="blue">Login</Link>
+              Not a member? &nbsp;
+              <Link to="/signup" className="blue">Create Account</Link>
             </p>
           </div>
         </div>
@@ -92,11 +72,11 @@ const SignupForm = (props) => {
   );
 };
 
-SignupForm.propTypes = {
+LoginForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   formData: PropTypes.shape({
-    email: PropTypes.string.isRequired
+    password: PropTypes.string.isRequired
   }).isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
@@ -104,8 +84,8 @@ SignupForm.propTypes = {
   }),
 };
 
-SignupForm.defaultProps = {
+LoginForm.defaultProps = {
   errors: {},
 };
 
-export default SignupForm;
+export default LoginForm;

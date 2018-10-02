@@ -5,7 +5,7 @@ import authPages from '../views/auth';
 import routes from '../components/routes';
 
 const { GuestRoute } = routes;
-const { Signup } = authPages;
+const { Signup, Login } = authPages;
 
 export default [
   {
@@ -24,6 +24,12 @@ export default [
     type: GuestRoute,
     path: '/signup',
     component: Signup,
+    exact: true,
+  },
+  {
+    type: GuestRoute,
+    path: '/login',
+    component: Login,
     exact: true,
   }
 ];

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing SignupForm component should render as expected when there is an error 1`] = `
+exports[`testing LoginForm component should render as expected when there is an error 1`] = `
 <section
-  id="register"
+  id="login"
 >
   <Dimmer
     active={false}
@@ -40,34 +40,15 @@ exports[`testing SignupForm component should render as expected when there is an
         Create Account
       </h1>
       <form
-        id="signupForm"
+        id="LoginForm"
         onSubmit={[Function]}
       >
         <input
           className="form-input"
-          id="name"
-          name="fullname"
-          onChange={[Function]}
-          placeholder="Full Name"
-          required={true}
-          type="text"
-        />
-        <input
-          className="form-input"
           id="email"
-          name="email"
+          name="usernameOrEmail"
           onChange={[Function]}
-          placeholder="Email"
-          required={true}
-          type="text"
-          value=""
-        />
-        <input
-          className="form-input"
-          id="username"
-          name="username"
-          onChange={[Function]}
-          placeholder="Username"
+          placeholder="Email or Username"
           required={true}
           type="text"
           value=""
@@ -86,20 +67,20 @@ exports[`testing SignupForm component should render as expected when there is an
           className="form-input btn btn-primary"
           id="submit-btn"
           type="submit"
-          value="Create Account"
+          value="Login"
         />
       </form>
       <div
         className="form-footer center"
       >
         <p>
-          Already a member?  
+          Not a member?  
           <Link
             className="blue"
             replace={false}
-            to="/login"
+            to="/signup"
           >
-            Login
+            Create Account
           </Link>
         </p>
       </div>
@@ -108,9 +89,9 @@ exports[`testing SignupForm component should render as expected when there is an
 </section>
 `;
 
-exports[`testing SignupForm component should render as expected when there is no error 1`] = `
+exports[`testing LoginForm component should render as expected when there is no error 1`] = `
 <section
-  id="register"
+  id="login"
 >
   <Dimmer
     active={false}
@@ -143,34 +124,15 @@ exports[`testing SignupForm component should render as expected when there is no
         Create Account
       </h1>
       <form
-        id="signupForm"
+        id="LoginForm"
         onSubmit={[Function]}
       >
         <input
           className="form-input"
-          id="name"
-          name="fullname"
-          onChange={[Function]}
-          placeholder="Full Name"
-          required={true}
-          type="text"
-        />
-        <input
-          className="form-input"
           id="email"
-          name="email"
+          name="usernameOrEmail"
           onChange={[Function]}
-          placeholder="Email"
-          required={true}
-          type="text"
-          value=""
-        />
-        <input
-          className="form-input"
-          id="username"
-          name="username"
-          onChange={[Function]}
-          placeholder="Username"
+          placeholder="Email or Username"
           required={true}
           type="text"
           value=""
@@ -189,20 +151,20 @@ exports[`testing SignupForm component should render as expected when there is no
           className="form-input btn btn-primary"
           id="submit-btn"
           type="submit"
-          value="Create Account"
+          value="Login"
         />
       </form>
       <div
         className="form-footer center"
       >
         <p>
-          Already a member?  
+          Not a member?  
           <Link
             className="blue"
             replace={false}
-            to="/login"
+            to="/signup"
           >
-            Login
+            Create Account
           </Link>
         </p>
       </div>

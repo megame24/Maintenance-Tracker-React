@@ -6,6 +6,12 @@ const signup = formData => ({
   payload: axiosInstance().post('/auth/signup/', formData),
 });
 
+const login = formData => ({
+  type: types.LOGIN,
+  payload: axiosInstance().post('/auth/login/', formData),
+});
+
 export default {
-  signup
+  signup,
+  login,
 };
