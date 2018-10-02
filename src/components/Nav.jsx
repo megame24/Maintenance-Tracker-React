@@ -2,6 +2,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import authActions from '../actions/authActions';
 import { UsersNav, AdminNav, GuestNav, NavHeader } from './helpers/NavHelper';
 
 /**
@@ -24,8 +25,18 @@ export class Nav extends React.Component {
         admin: 'hide',
       },
     };
+    this.logout = this.logout.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
+  }
+
+  /**
+   * logout
+   * @returns {undefined}
+   */
+  logout() {
+    const { logout } = this.props;
+    return logout();
   }
 
   /**
@@ -87,6 +98,7 @@ export class Nav extends React.Component {
                 toggleDropDown={this.toggleDropDown}
                 dropDown={dropDown}
                 notMobile={notMobile}
+                logout={this.logout}
               />
             )
           }
@@ -98,6 +110,7 @@ export class Nav extends React.Component {
                 toggleDropDown={this.toggleDropDown}
                 dropDown={dropDown}
                 notMobile={notMobile}
+                logout={this.logout}
               />
             )
           }
@@ -112,6 +125,7 @@ export class Nav extends React.Component {
 }
 
 Nav.propTypes = {
+  logout: PropTypes.func.isRequired,
   token: PropTypes.string,
   username: PropTypes.string,
   role: PropTypes.string,
@@ -132,4 +146,6 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, {
+  logout: authActions.logout
+})(Nav);

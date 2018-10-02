@@ -5,6 +5,7 @@ import { UsersNav, AdminNav, GuestNav, NavHeader } from '../../src/components/he
 describe('Testing UsersNav component', () => {
   it('should render as expected', () => {
     const props = {
+      logout: () => {},
       notMobile: 'not-mobile',
       dropDown: {},
       toggleDropDown: () => {},
@@ -18,6 +19,7 @@ describe('Testing UsersNav component', () => {
 describe('Testing AdminNav component', () => {
   it('should render as expected', () => {
     const props = {
+      logout: () => {},
       notMobile: 'not-mobile',
       dropDown: {},
       toggleDropDown: () => {},

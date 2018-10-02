@@ -38,6 +38,7 @@ exports[`Testing AdminNav component should render as expected 1`] = `
       <a
         href="#"
         id="logout"
+        onClick={[Function]}
       >
         Logout
       </a>
@@ -51,20 +52,22 @@ exports[`Testing GuestNav component should render as expected 1`] = `
   className="right-menu not-mobile not-mobile-right"
 >
   <li>
-    <a
+    <Link
       className="nav-item"
-      href="#"
+      replace={false}
+      to="/login"
     >
       Login
-    </a>
+    </Link>
   </li>
   <li>
-    <a
+    <Link
       className="nav-item"
-      href="/signup.html"
+      replace={false}
+      to="/signup"
     >
       Sign Up
-    </a>
+    </Link>
   </li>
 </ul>
 `;
@@ -161,6 +164,7 @@ exports[`Testing UsersNav component should render as expected 1`] = `
       <a
         href="#"
         id="logout"
+        onClick={[Function]}
       >
         Logout
       </a>

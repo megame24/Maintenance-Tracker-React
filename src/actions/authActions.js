@@ -11,7 +11,12 @@ const login = formData => ({
   payload: axiosInstance().post('/auth/login/', formData),
 });
 
+const logout = () => ({
+  type: types.LOGOUT,
+});
+
 export default {
   signup,
   login,
+  logout,
 };

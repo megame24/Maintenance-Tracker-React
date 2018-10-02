@@ -55,11 +55,11 @@ describe('Testing authReducer', () => {
     const state = authReducer(initialState, action);
     expect(state.isLoading).toEqual(true);
   });
-  // it('should set token to an empty string when LOGOUT is dispatched', () => {
-  //   const action = { type: actions.LOGOUT};
-  //   const state = authReducer(initialState, action);
-  //   expect(state.token).toEqual('');
-  // });
+  it('should set token to an empty string when LOGOUT is dispatched', () => {
+    const action = { type: actions.LOGOUT};
+    const state = authReducer(initialState, action);
+    expect(state.token).toEqual('');
+  });
   it('should save an error message to the state when LOGIN_FAILURE is dispatched', () => {
     const action = {
       type: `${actions.LOGIN}_FAILURE`,

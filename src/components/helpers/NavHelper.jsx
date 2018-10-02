@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 export const UsersNav = ({
-  notMobile, dropDown, toggleDropDown, username
+  notMobile, dropDown, toggleDropDown, username, logout
 }) => (
   <ul className={`right-menu ${notMobile} not-mobile-right`}>
     <li key="request" className="request">
@@ -42,7 +42,7 @@ export const UsersNav = ({
         </a>
       </div>
       <div className={`drop-down-menu ${dropDown.users}`}>
-        <a id="logout" href="#">Logout</a>
+        <a id="logout" href="#" onClick={logout}>Logout</a>
       </div>
     </li>
   </ul>
@@ -52,6 +52,7 @@ UsersNav.propTypes = {
   notMobile: PropTypes.string,
   dropDown: PropTypes.shape({}).isRequired,
   toggleDropDown: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired
 };
 
@@ -60,7 +61,7 @@ UsersNav.defaultProps = {
 };
 
 export const AdminNav = ({
-  notMobile, username, dropDown, toggleDropDown
+  notMobile, username, dropDown, toggleDropDown, logout
 }) => (
   <ul className={`right-menu ${notMobile} not-mobile-right`}>
     <li className="admin">
@@ -82,7 +83,7 @@ export const AdminNav = ({
       </div>
       <div className={`drop-down-menu ${dropDown.admin}`}>
         <Link to="/dashboard">Dashboard</Link>
-        <a id="logout" href="#">Logout</a>
+        <a id="logout" href="#" onClick={logout}>Logout</a>
       </div>
     </li>
   </ul>
@@ -92,6 +93,7 @@ AdminNav.propTypes = {
   notMobile: PropTypes.string,
   dropDown: PropTypes.shape({}).isRequired,
   toggleDropDown: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired
 };
 
@@ -102,10 +104,10 @@ AdminNav.defaultProps = {
 export const GuestNav = () => (
   <ul className="right-menu not-mobile not-mobile-right">
     <li>
-      <a href="#" className="nav-item">Login</a>
+      <Link to="/login" className="nav-item">Login</Link>
     </li>
     <li>
-      <a href="/signup.html" className="nav-item">Sign Up</a>
+      <Link to="/signup" className="nav-item">Sign Up</Link>
     </li>
   </ul>
 );

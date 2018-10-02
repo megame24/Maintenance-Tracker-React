@@ -24,6 +24,7 @@ describe('Testing Nav component', () => {
   
   describe("Testing component methods", () => {
     const props = {
+      logout: () => {},
       token: 'token',
       username: 'username',
       role: 'user',
