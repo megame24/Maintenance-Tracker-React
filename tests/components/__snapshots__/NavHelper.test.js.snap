@@ -49,7 +49,7 @@ exports[`Testing AdminNav component should render as expected 1`] = `
 
 exports[`Testing GuestNav component should render as expected 1`] = `
 <ul
-  className="right-menu not-mobile not-mobile-right"
+  className="right-menu  not-mobile-right"
 >
   <li>
     <Link

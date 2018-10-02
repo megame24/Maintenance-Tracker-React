@@ -70,6 +70,7 @@ section {
   font-size: 80%;
 }
 .btn:hover {
+  color: inherit;
   transition: background-color 0.3s, color 0.3s;
 }
 .btn-primary {
@@ -367,6 +368,9 @@ tbody tr:nth-child(odd) {
           SIGN UP & LOGIN
      ======================= */
 
+#register .btn:hover, #login .btn:hover {
+  color: white;
+}
 .form {
   width: 100%;
   background-color: #fff;
@@ -455,6 +459,9 @@ footer {
 }
 footer p {
   display: inline-block;
+}
+footer a {
+  color: #00bcd4;
 }
 
 /* ===================== 
@@ -639,11 +646,14 @@ footer p {
 #landing {
   padding-top: 0;
 }
+#landing .btn:hover {
+  color: white;
+}
 .hero {
   width: 100%;
   min-height: calc(100vh - 60px);
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url(/img/hero2.png);
+    url("https://res.cloudinary.com/megame/image/upload/v1538499046/hero2_injweo.png");
   background-position: center;
   background-size: cover;
   padding-top: 25px;

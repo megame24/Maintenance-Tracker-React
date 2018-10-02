@@ -101,8 +101,10 @@ AdminNav.defaultProps = {
   notMobile: '',
 };
 
-export const GuestNav = () => (
-  <ul className="right-menu not-mobile not-mobile-right">
+export const GuestNav = ({
+  notMobile
+}) => (
+  <ul className={`right-menu ${notMobile} not-mobile-right`}>
     <li>
       <Link to="/login" className="nav-item">Login</Link>
     </li>
@@ -111,6 +113,14 @@ export const GuestNav = () => (
     </li>
   </ul>
 );
+
+GuestNav.propTypes = {
+  notMobile: PropTypes.string,
+};
+
+GuestNav.defaultProps = {
+  notMobile: '',
+};
 
 export const NavHeader = ({
   navHeaderShadow, toggleMenu,

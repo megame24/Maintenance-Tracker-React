@@ -115,7 +115,7 @@ export class Nav extends React.Component {
             )
           }
           {
-            !token && <GuestNav />
+            !token && <GuestNav notMobile={notMobile} />
           }
           <div className="clearfix" />
         </div>

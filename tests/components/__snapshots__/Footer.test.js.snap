@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Footer component should render as expected 1`] = `
+<footer>
+  <p>
+    © Maintenance Tracker    
+    <Link
+      replace={false}
+      to="/about"
+    >
+      About Us
+    </Link>
+  </p>
+</footer>
+`;
