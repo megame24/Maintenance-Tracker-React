@@ -38,7 +38,7 @@ describe("The CreateRequest component", () => {
     });
     describe('Testing handleChange function', () => {
       it('should update the formData state', () => {
-        const LoginComponentInstance = createRequestComponent().instance();
+        const createRequestComponentInstance = createRequestComponent().instance();
         const event = {
           persist: () => {},
           target: {
@@ -46,18 +46,18 @@ describe("The CreateRequest component", () => {
             value: 'yo'
           }
         }
-        LoginComponentInstance.handleChange(event);
-        expect(LoginComponentInstance.state.formData.title).toEqual(event.target.value);
+        createRequestComponentInstance.handleChange(event);
+        expect(createRequestComponentInstance.state.formData.title).toEqual(event.target.value);
       });
     });
     describe('Testing handleSubmit function', () => {
       it('should be called', () => {
-        const LoginComponentInstance = createRequestComponent().instance();
+        const createRequestComponentInstance = createRequestComponent().instance();
         let count = 0;
         const event = {
           preventDefault: () => count++,
         };
-        LoginComponentInstance.handleSubmit(event);
+        createRequestComponentInstance.handleSubmit(event);
         expect(count).toEqual(1);
       });
     });

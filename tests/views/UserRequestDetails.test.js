@@ -29,12 +29,12 @@ describe("The UserRequestDetails component", () => {
         status: 'pending',
       },
     };
-    const LoginComponent = () => shallow(<UserRequestDetails {...props}/>);
+    const UserRequestDetailsComponent = () => shallow(<UserRequestDetails {...props}/>);
 
     describe("Testing componentDidMount", () => {
       it("should be called on page load", () => {
         jest.spyOn(UserRequestDetails.prototype, 'componentDidMount');
-        LoginComponent();
+        UserRequestDetailsComponent();
         expect(UserRequestDetails.prototype.componentDidMount.mock.calls.length).toEqual(1);
       });
     });

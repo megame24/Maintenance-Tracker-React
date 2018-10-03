@@ -37,7 +37,7 @@ export const AdminFeedbackAndCtrlBtns = ({ request }) => (
     {request.status === 'pending' && (
       <span>
         <Link
-          to={`/users/requests/edit/${request.id}`}
+          to={`/users/requests/${request.id}/edit`}
           className="btn btn-tertiary"
         >
           Edit&nbsp;

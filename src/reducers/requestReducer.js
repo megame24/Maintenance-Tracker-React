@@ -2,7 +2,8 @@ import types from '../actions/actionTypes';
 
 const {
   CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
-  CLEAR_ERRORS, GET_REQUEST,
+  CLEAR_ERRORS, GET_REQUEST, RESET_EDIT_REQ_SUCC, EDIT_REQUEST,
+  EDIT_INPUT_ON_CHANGE,
 } = types;
 
 export const initialCreateReqState = {
@@ -13,6 +14,17 @@ export const initialCreateReqState = {
     response: {},
   },
   success: false,
+};
+
+export const initialEditReqState = {
+  isLoading: false,
+  errors: {
+    statusCode: 0,
+    message: '',
+    response: {},
+  },
+  success: false,
+  request: {},
 };
 
 export const initialUserReqsState = {
@@ -75,6 +87,85 @@ export const createRequest = (state = initialCreateReqState, action = {}) => {
         message: action.payload.message,
         response: action.payload.response,
       }
+    };
+  default:
+    return state;
+  }
+};
+
+export const editRequest = (state = initialEditReqState, action = {}) => {
+  switch (action.type) {
+  case CLEAR_ERRORS:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+    };
+  case RESET_EDIT_REQ_SUCC:
+    return {
+      ...state,
+      success: false,
+    };
+  case `${EDIT_REQUEST}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${GET_REQUEST}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${EDIT_REQUEST}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      success: true,
+    };
+  case `${EDIT_REQUEST}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  case `${GET_REQUEST}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  case `${GET_REQUEST}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      request: action.payload.data,
+    };
+  case EDIT_INPUT_ON_CHANGE:
+    return {
+      ...state,
+      request: {
+        ...state.request,
+        [action.payload.target.name]: action.payload.target.value,
+      },
     };
   default:
     return state;

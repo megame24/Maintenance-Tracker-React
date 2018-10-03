@@ -29,19 +29,19 @@ describe("The ViewRequests component", () => {
         status: 'pending',
       }],
     };
-    const LoginComponent = () => shallow(<ViewRequests {...props}/>);
+    const ViewRequestsComponent = () => shallow(<ViewRequests {...props}/>);
 
     describe("Testing componentDidMount", () => {
       it("should be called on page load", () => {
         jest.spyOn(ViewRequests.prototype, 'componentDidMount');
-        LoginComponent();
+        ViewRequestsComponent();
         expect(ViewRequests.prototype.componentDidMount.mock.calls.length).toEqual(1);
       });
     });
     describe("Testing componentWillUnmount", () => {
       it("should be called on leaving page", () => {
         jest.spyOn(ViewRequests.prototype, 'componentWillUnmount');
-        LoginComponent().unmount();
+        ViewRequestsComponent().unmount();
         expect(ViewRequests.prototype.componentWillUnmount.mock.calls.length).toEqual(1);
       });
     });

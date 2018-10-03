@@ -2,28 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import requestActions from '../../actions/requestActions';
-import { CreateRequestForm } from '../../components/form/RequestForms';
+import { EditRequestForm } from '../../components/form/RequestForms';
 import generalActions from '../../actions/generalActions';
 
 /**
- * CreateRequest Component
+ * EditRequest Component
  * @returns {null} null
  */
-export class CreateRequest extends React.Component {
+export class EditRequest extends React.Component {
   /**
    * @returns {undefined}
    */
   constructor() {
     super();
-    this.state = {
-      formData: {
-        title: '',
-        description: '',
-        type: 'repair',
-      }
-    };
-    this.handleChange = this.handleChange.bind(this);
+    this.id = null;
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  /**
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    const { getRequest } = this.props;
+    const urlArray = window.location.href.split('/');
+    const id = urlArray[urlArray.length - 2];
+    this.id = id;
+    getRequest(this.id);
   }
 
   /**
@@ -31,9 +35,9 @@ export class CreateRequest extends React.Component {
    */
   componentWillUnmount() {
     const {
-      resetCreateReqSucc, success, errors, clearErrors,
+      resetEditReqSucc, success, errors, clearErrors,
     } = this.props;
-    if (success) resetCreateReqSucc();
+    if (success) resetEditReqSucc();
     if (errors.message) clearErrors();
   }
 
@@ -42,16 +46,10 @@ export class CreateRequest extends React.Component {
    * @param {Object} event event object
    * @returns {undefined}
    */
-  handleChange(event) {
+  handleChange = (event) => {
     event.persist();
-    this.setState(state => (
-      {
-        ...state,
-        formData: {
-          ...state.formData, [event.target.name]: event.target.value
-        },
-      }
-    ));
+    const { handleEditInputChange } = this.props;
+    return handleEditInputChange(event);
   }
 
   /**
@@ -61,9 +59,8 @@ export class CreateRequest extends React.Component {
    */
   handleSubmit(event) {
     event.preventDefault();
-    const { formData } = this.state;
-    const { createRequest } = this.props;
-    createRequest(formData);
+    const { editRequest, request } = this.props;
+    return editRequest(this.id, request);
   }
 
   /**
@@ -71,10 +68,12 @@ export class CreateRequest extends React.Component {
    * @returns {Function} jsx
    */
   render() {
-    const { formData: { title, description, type } } = this.state;
-    const { errors, isLoading, success } = this.props;
+    const {
+      errors, isLoading, success,
+      request: { title, description, type }
+    } = this.props;
     return (
-      <CreateRequestForm
+      <EditRequestForm
         title={title}
         description={description}
         type={type}
@@ -88,32 +87,41 @@ export class CreateRequest extends React.Component {
   }
 }
 
-CreateRequest.propTypes = {
+EditRequest.propTypes = {
+  handleEditInputChange: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
-  createRequest: PropTypes.func.isRequired,
-  resetCreateReqSucc: PropTypes.func.isRequired,
+  editRequest: PropTypes.func.isRequired,
+  getRequest: PropTypes.func.isRequired,
+  resetEditReqSucc: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     statusCode: PropTypes.number
+  }),
+  request: PropTypes.shape({
+    title: PropTypes.string
   }),
   isLoading: PropTypes.bool.isRequired,
   success: PropTypes.bool.isRequired,
 };
 
-CreateRequest.defaultProps = {
-  errors: {}
+EditRequest.defaultProps = {
+  errors: {},
+  request: {},
 };
 
 export const mapStateToProps = (state) => {
-  const { errors, isLoading, success } = state.createRequest;
+  const { errors, isLoading, success, request } = state.editRequest;
   return {
     errors,
     isLoading,
     success,
+    request,
   };
 };
 
 export default connect(mapStateToProps, {
-  createRequest: requestActions.createRequest,
-  resetCreateReqSucc: requestActions.resetCreateReqSucc,
+  editRequest: requestActions.editRequest,
+  getRequest: requestActions.getRequest,
+  resetEditReqSucc: requestActions.resetEditReqSucc,
   clearErrors: generalActions.clearErrors,
-})(CreateRequest);
+  handleEditInputChange: requestActions.handleEditInputChange,
+})(EditRequest);

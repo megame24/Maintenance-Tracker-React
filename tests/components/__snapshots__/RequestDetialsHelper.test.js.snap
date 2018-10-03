@@ -14,7 +14,7 @@ exports[`Testing AdminFeedbackAndCtrlBtns component should render as expected 1`
     <Link
       className="btn btn-tertiary"
       replace={false}
-      to="/users/requests/edit/1"
+      to="/users/requests/1/edit"
     >
       Edit 
       <i

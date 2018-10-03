@@ -7,7 +7,10 @@ import requestPages from '../views/request';
 
 const { GuestRoute, UserRoute } = routes;
 const { Signup, Login } = authPages;
-const { CreateRequest, ViewRequests, UserRequestDetails } = requestPages;
+const {
+  CreateRequest, ViewRequests, UserRequestDetails,
+  EditRequest
+} = requestPages;
 
 export default [
   {
@@ -38,6 +41,12 @@ export default [
     type: UserRoute,
     path: '/users/requests/create',
     component: CreateRequest,
+    exact: true,
+  },
+  {
+    type: UserRoute,
+    path: '/users/requests/:id/edit',
+    component: EditRequest,
     exact: true,
   },
   {
