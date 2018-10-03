@@ -4,7 +4,7 @@ import types from './actionTypes';
 const {
   CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
   GET_REQUEST, EDIT_REQUEST, RESET_EDIT_REQ_SUCC,
-  EDIT_INPUT_ON_CHANGE
+  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST, RESET_DELETE_REQ_SUCC,
 } = types;
 
 const createRequest = formData => ({
@@ -25,6 +25,10 @@ const resetEditReqSucc = () => ({
   type: RESET_EDIT_REQ_SUCC,
 });
 
+const resetDeleteReqSucc = () => ({
+  type: RESET_DELETE_REQ_SUCC,
+});
+
 const getUserRequests = () => ({
   type: GET_USER_REQUESTS,
   payload: axiosInstance().get('/users/requests'),
@@ -40,6 +44,11 @@ const handleEditInputChange = event => ({
   payload: event,
 });
 
+const deleteRequest = id => ({
+  type: DELETE_REQUEST,
+  payload: axiosInstance().delete(`/users/requests/${id}`),
+});
+
 export default {
   createRequest,
   resetCreateReqSucc,
@@ -48,4 +57,6 @@ export default {
   editRequest,
   resetEditReqSucc,
   handleEditInputChange,
+  deleteRequest,
+  resetDeleteReqSucc,
 };

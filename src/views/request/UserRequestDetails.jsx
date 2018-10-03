@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import requestActions from '../../actions/requestActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import {
   RequestDetail, AdminFeedbackAndCtrlBtns,
 } from '../../components/helpers/RequestDetailsHelper';
+import generalActions from '../../actions/generalActions';
 
 /**
  * Request details component
@@ -32,6 +33,7 @@ export class UserRequestDetails extends React.Component {
         pending: 'Approval pending',
       },
     };
+    this.deleteRequest = this.deleteRequest.bind(this);
   }
 
   /**
@@ -47,18 +49,44 @@ export class UserRequestDetails extends React.Component {
   /**
    * @returns {undefined}
    */
+  componentWillUnmount() {
+    const {
+      resetDeleteReqSucc, deleteSuccess, errors, clearErrors,
+      deleteErrors,
+    } = this.props;
+    if (deleteSuccess) resetDeleteReqSucc();
+    if (errors.message || deleteErrors.message) clearErrors();
+  }
+
+  /**
+   * Delete request
+   * @param {Number} id request id
+   * @returns {undefined}
+   */
+  deleteRequest(id) {
+    const { deleteRequest } = this.props;
+    return deleteRequest(id);
+  }
+
+  /**
+   * @returns {undefined}
+   */
   render() {
-    const { request, isLoading, errors } = this.props;
+    const {
+      request, isLoading, errors,
+      deleteErrors, deleteSuccess, isLoadingDelete,
+    } = this.props;
     const { statusColor, statusMessage } = this.state;
     return (
       <section className="user-request-detail min-height admin-request-detail">
-        <Loading isLoading={isLoading} />
+        <Loading isLoading={isLoading || isLoadingDelete} />
         <div className="container">
           {
-            errors.message
+            errors.message || deleteErrors.message
               ? (
                 <div>
                   <ErrorMessage errors={errors} />
+                  <ErrorMessage errors={deleteErrors} />
                   <Link
                     to="/users/requests/all"
                     className="btn btn-primary-ghost"
@@ -74,11 +102,17 @@ export class UserRequestDetails extends React.Component {
                     statusMessage={statusMessage}
                   />
                   <hr />
-                  <AdminFeedbackAndCtrlBtns request={request} />
+                  <AdminFeedbackAndCtrlBtns
+                    request={request}
+                    deleteRequest={this.deleteRequest}
+                  />
                 </div>
               )
           }
         </div>
+        {
+          deleteSuccess && <Redirect to="/users/requests/all" />
+        }
       </section>
     );
   }
@@ -89,26 +123,44 @@ UserRequestDetails.propTypes = {
     title: PropTypes.string
   }),
   isLoading: PropTypes.bool.isRequired,
+  isLoadingDelete: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
     message: PropTypes.string
   }),
+  deleteSuccess: PropTypes.bool.isRequired,
+  deleteErrors: PropTypes.shape({
+    message: PropTypes.string
+  }),
   getRequest: PropTypes.func.isRequired,
+  deleteRequest: PropTypes.func.isRequired,
+  resetDeleteReqSucc: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 UserRequestDetails.defaultProps = {
   request: {},
   errors: {},
+  deleteErrors: {},
 };
 
 export const mapStateToProps = (state) => {
   const { request, isLoading, errors } = state.request;
+  const {
+    success: deleteSuccess, isLoading: isLoadingDelete, errors: deleteErrors
+  } = state.deleteRequest;
   return {
     request,
     isLoading,
     errors,
+    deleteErrors,
+    deleteSuccess,
+    isLoadingDelete,
   };
 };
 
 export default connect(mapStateToProps, {
   getRequest: requestActions.getRequest,
+  deleteRequest: requestActions.deleteRequest,
+  resetDeleteReqSucc: requestActions.resetDeleteReqSucc,
+  clearErrors: generalActions.clearErrors,
 })(UserRequestDetails);

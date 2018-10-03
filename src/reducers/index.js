@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import auth from './authReducer';
 import {
   createRequest, userRequests, request,
-  editRequest,
+  editRequest, deleteRequest
 } from './requestReducer';
 
 export default combineReducers({
@@ -11,4 +11,5 @@ export default combineReducers({
   userRequests,
   request,
   editRequest,
+  deleteRequest,
 });

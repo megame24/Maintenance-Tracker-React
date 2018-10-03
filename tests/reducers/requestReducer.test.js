@@ -3,6 +3,7 @@ import {
   userRequests, initialUserReqsState,
   request, initialRequestState,
   editRequest, initialEditReqState,
+  deleteRequest, initialDeleteReqState,
 } from '../../src/reducers/requestReducer';
 import types from '../../src/actions/actionTypes';
 
@@ -143,6 +144,11 @@ describe('Testing request', () => {
     const state = request(initialRequestState, action);
     expect(state.errors.message).toEqual(action.payload.message);
   });
+  it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
+    const action = { type: types.CLEAR_ERRORS};
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.errors.message).toEqual('');
+  });
 });
 
 describe('Testing editRequest', () => {
@@ -233,3 +239,53 @@ describe('Testing editRequest', () => {
     expect(state.request.title).toEqual(action.payload.target.value);
   });
 });
+
+describe('Testing deleteRequest', () => {
+  it('should return the initial state if no action type is passed', () => {
+    const state = deleteRequest(initialDeleteReqState);
+    expect(state).toEqual(initialDeleteReqState);
+  });
+  it('should return the initial state if no initial state is passed', () => {
+    const state = deleteRequest();
+    expect(state).toEqual(initialDeleteReqState);
+  });
+  it('should return the initial state if no invalid action type is passed', () => {
+    const state = deleteRequest(initialDeleteReqState, { type: 'INVALID' });
+    expect(state).toEqual(initialDeleteReqState);
+  });
+  it('should set success to true on delete request success', () => {
+    const action = {
+      type: `${types.DELETE_REQUEST}_SUCCESS`,
+    }
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.success).toEqual(true);
+  });
+  it('should set success to false when RESET_DELETE_REQ_SUCC is dispatched', () => {
+    const action = {
+      type: types.RESET_DELETE_REQ_SUCC,
+    }
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.success).toEqual(false);
+  });
+  it('should set isLoading to true on loading', () => {
+    const action = { type: `${types.DELETE_REQUEST}_LOADING`};
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.isLoading).toEqual(true);
+  });
+  it('should save an error message to the state on failure', () => {
+    const action = {
+      type: `${types.DELETE_REQUEST}_FAILURE`,
+      payload: {
+        message: 'ERROR!!'
+      }
+    }
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.errors.message).toEqual(action.payload.message);
+  });
+  it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
+    const action = { type: types.CLEAR_ERRORS};
+    const state = deleteRequest(initialDeleteReqState, action);
+    expect(state.errors.message).toEqual('');
+  });
+});
+

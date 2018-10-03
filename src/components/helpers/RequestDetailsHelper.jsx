@@ -28,7 +28,7 @@ RequestDetail.propTypes = {
   }).isRequired,
 };
 
-export const AdminFeedbackAndCtrlBtns = ({ request }) => (
+export const AdminFeedbackAndCtrlBtns = ({ request, deleteRequest }) => (
   <div>
     <h4>Feedback from an admin</h4>
     <div className="feedback">
@@ -54,6 +54,7 @@ export const AdminFeedbackAndCtrlBtns = ({ request }) => (
         <a
           id="delete"
           className="btn btn-danger"
+          onClick={() => deleteRequest(request.id)}
         >
           Delete&nbsp;
           <i className="icon ion-android-delete" />
@@ -64,6 +65,7 @@ export const AdminFeedbackAndCtrlBtns = ({ request }) => (
 );
 
 AdminFeedbackAndCtrlBtns.propTypes = {
+  deleteRequest: PropTypes.func.isRequired,
   request: PropTypes.shape({
     title: PropTypes.string
   }).isRequired,

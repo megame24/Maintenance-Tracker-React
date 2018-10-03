@@ -15,7 +15,8 @@ const props = {
     type: 'repair',
     id: 1,
     status: 'pending',
-  }
+  },
+  deleteRequest: () => {},
 }
 
 describe('Testing RequestDetail component', () => {

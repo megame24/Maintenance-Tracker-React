@@ -26,6 +26,7 @@ exports[`Testing AdminFeedbackAndCtrlBtns component should render as expected 1`
   <a
     className="btn btn-danger"
     id="delete"
+    onClick={[Function]}
   >
     Delete 
     <i

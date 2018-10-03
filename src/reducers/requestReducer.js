@@ -3,10 +3,20 @@ import types from '../actions/actionTypes';
 const {
   CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
   CLEAR_ERRORS, GET_REQUEST, RESET_EDIT_REQ_SUCC, EDIT_REQUEST,
-  EDIT_INPUT_ON_CHANGE,
+  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST, RESET_DELETE_REQ_SUCC
 } = types;
 
 export const initialCreateReqState = {
+  isLoading: false,
+  errors: {
+    statusCode: 0,
+    message: '',
+    response: {},
+  },
+  success: false,
+};
+
+export const initialDeleteReqState = {
   isLoading: false,
   errors: {
     statusCode: 0,
@@ -215,6 +225,15 @@ export const userRequests = (state = initialUserReqsState, action = {}) => {
 };
 export const request = (state = initialRequestState, action = {}) => {
   switch (action.type) {
+  case CLEAR_ERRORS:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+    };
   case `${GET_REQUEST}_LOADING`:
     return {
       ...state,
@@ -231,6 +250,52 @@ export const request = (state = initialRequestState, action = {}) => {
       request: action.payload.data,
     };
   case `${GET_REQUEST}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  default:
+    return state;
+  }
+};
+
+export const deleteRequest = (state = initialDeleteReqState, action = {}) => {
+  switch (action.type) {
+  case CLEAR_ERRORS:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+    };
+  case RESET_DELETE_REQ_SUCC:
+    return {
+      ...state,
+      success: false,
+    };
+  case `${DELETE_REQUEST}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${DELETE_REQUEST}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      success: true,
+    };
+  case `${DELETE_REQUEST}_FAILURE`:
     return {
       ...state,
       isLoading: false,
