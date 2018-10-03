@@ -120,13 +120,13 @@ exports[`Testing UsersNav component should render as expected 1`] = `
     >
       <Link
         replace={false}
-        to="/create-request"
+        to="/users/requests/create"
       >
         Create Request
       </Link>
       <Link
         replace={false}
-        to="/view-requests"
+        to="/users/requests/all"
       >
         View Requests
       </Link>

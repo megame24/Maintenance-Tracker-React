@@ -17,6 +17,7 @@ describe("The Login component", () => {
 
   describe("Testing component methods", () => {
     const props = {
+      clearErrors: () => {},
       login: () => {},
       isLoading: false,
       errors: {

@@ -1,5 +1,5 @@
 import authReducer, { initialState } from '../../src/reducers/authReducer';
-import actions from '../../src/actions/actionTypes';
+import types from '../../src/actions/actionTypes';
 
 describe('Testing authReducer', () => {
   it('should return the initial state if no action type is passed', () => {
@@ -16,7 +16,7 @@ describe('Testing authReducer', () => {
   });
   it('should save a token to the state upon successful login', () => {
     const action = {
-      type: `${actions.LOGIN}_SUCCESS`,
+      type: `${types.LOGIN}_SUCCESS`,
       payload: {
         token: 'newtoken',
         user: {}
@@ -36,7 +36,7 @@ describe('Testing authReducer', () => {
   });
   it('should save a token to the state when persist login action is dispatched', () => {
     const action = {
-      type: actions.PERSIST_LOGIN,
+      type: types.PERSIST_LOGIN,
       payload: {
         token: 'newtoken',
         user: {}
@@ -51,18 +51,18 @@ describe('Testing authReducer', () => {
     expect(state).toEqual(expectedState);
   });
   it('should set isLoading to true when LOGIN_LOADING is dispatched', () => {
-    const action = { type: `${actions.LOGIN}_LOADING`};
+    const action = { type: `${types.LOGIN}_LOADING`};
     const state = authReducer(initialState, action);
     expect(state.isLoading).toEqual(true);
   });
   it('should set token to an empty string when LOGOUT is dispatched', () => {
-    const action = { type: actions.LOGOUT};
+    const action = { type: types.LOGOUT};
     const state = authReducer(initialState, action);
     expect(state.token).toEqual('');
   });
   it('should save an error message to the state when LOGIN_FAILURE is dispatched', () => {
     const action = {
-      type: `${actions.LOGIN}_FAILURE`,
+      type: `${types.LOGIN}_FAILURE`,
       payload: {
         message: 'ERROR!!'
       }
@@ -71,13 +71,13 @@ describe('Testing authReducer', () => {
     expect(state.errors.message).toEqual(action.payload.message);
   });
     it('should set isLoading to true when SIGN_UP_LOADING is dispatched', () => {
-      const action = { type: `${actions.SIGN_UP}_LOADING`};
+      const action = { type: `${types.SIGN_UP}_LOADING`};
       const state = authReducer(initialState, action);
       expect(state.isLoading).toEqual(true);
     });
     it('should save an error message to the state when SIGN_UP_FAILURE is dispatched', () => {
       const action = {
-        type: `${actions.SIGN_UP}_FAILURE`,
+        type: `${types.SIGN_UP}_FAILURE`,
         payload: {
           message: 'ERROR!!'
         }
@@ -87,7 +87,7 @@ describe('Testing authReducer', () => {
     });
     it('should save a token to the state upon successful signup', () => {
       const action = {
-        type: `${actions.SIGN_UP}_SUCCESS`,
+        type: `${types.SIGN_UP}_SUCCESS`,
         payload: {
           token: 'newtoken',
           user: {}
@@ -105,5 +105,10 @@ describe('Testing authReducer', () => {
       }
       const state = authReducer(initialState, action);
       expect(state).toEqual(expectedState);
+    });
+    it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
+      const action = { type: types.CLEAR_ERRORS};
+      const state = authReducer(initialState, action);
+      expect(state.errors.message).toEqual('');
     });
 });

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import SignupForm from '../../components/form/SignupForm';
 import authActions from '../../actions/authActions';
+import generalActions from '../../actions/generalActions';
 
 /**
  * Signup Component
@@ -38,6 +39,8 @@ export class Signup extends React.Component {
    */
   componentWillUnmount() {
     document.body.style.backgroundColor = '#fff';
+    const { errors, clearErrors } = this.props;
+    if (errors.message) clearErrors();
   }
 
   /**
@@ -89,6 +92,7 @@ export class Signup extends React.Component {
 }
 
 Signup.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   signup: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
@@ -109,5 +113,6 @@ export const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  signup: authActions.signup
+  signup: authActions.signup,
+  clearErrors: generalActions.clearErrors,
 })(Signup);

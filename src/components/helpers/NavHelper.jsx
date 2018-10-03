@@ -19,8 +19,8 @@ export const UsersNav = ({
         </a>
       </div>
       <div className={`drop-down-menu ${dropDown.request}`}>
-        <Link to="/create-request">Create Request</Link>
-        <Link to="/view-requests">View Requests</Link>
+        <Link to="/users/requests/create">Create Request</Link>
+        <Link to="/users/requests/all">View Requests</Link>
       </div>
     </li>
     <li key="user" className="user">

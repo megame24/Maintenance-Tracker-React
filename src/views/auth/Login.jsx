@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import LoginForm from '../../components/form/LoginForm';
 import authActions from '../../actions/authActions';
+import generalActions from '../../actions/generalActions';
 
 /**
  * Login Component
@@ -36,6 +37,8 @@ export class Login extends React.Component {
    */
   componentWillUnmount() {
     document.body.style.backgroundColor = '#fff';
+    const { errors, clearErrors } = this.props;
+    if (errors.message) clearErrors();
   }
 
   /**
@@ -87,6 +90,7 @@ export class Login extends React.Component {
 }
 
 Login.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
@@ -107,5 +111,6 @@ export const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  login: authActions.login
+  login: authActions.login,
+  clearErrors: generalActions.clearErrors,
 })(Login);

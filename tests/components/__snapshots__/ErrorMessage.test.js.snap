@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ErrorMessage component should render as expected when there is an error 1`] = `
+<div
+  className="message error-message"
+>
+  error
+</div>
+`;

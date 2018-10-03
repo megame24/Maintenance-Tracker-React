@@ -5,19 +5,20 @@ import { CreateRequest, mapStateToProps } from "../../src/views/request/CreateRe
 describe("The CreateRequest component", () => {
   describe("Testing mapStateToProps", () => {
     it("should map the state to the props correctly", () => {
-      const request = {
+      const createRequest = {
         isLoading: true,
         errors: {},
         success: true,
       };
-      const state = { request };
+      const state = { createRequest };
       const componentState = mapStateToProps(state);
-      expect(componentState).toEqual(request);
+      expect(componentState).toEqual(createRequest);
     });
   });
 
   describe("Testing component methods", () => {
     const props = {
+      clearErrors: () => {},
       createRequest: () => {},
       resetCreateReqSucc: () => {},
       isLoading: false,

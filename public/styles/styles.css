@@ -71,7 +71,7 @@ section {
   font-size: 80%;
 }
 .btn:hover {
-  color: inherit;
+  color: white;
   transition: background-color 0.3s, color 0.3s;
 }
 .btn-primary {
@@ -646,9 +646,6 @@ footer a {
 
 #landing {
   padding-top: 0;
-}
-#landing .btn:hover {
-  color: white;
 }
 .hero {
   width: 100%;

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing NoRequests component should render as expected 1`] = `
+<div
+  className="no-requests"
+>
+  <i
+    className="ion-plus-circled icon"
+  />
+  <br />
+  <br />
+  <p>
+    You have no requests at the moment,
+    <Link
+      className="btn btn-primary btn-small"
+      replace={false}
+      to="/users/requests/create"
+    >
+      click here
+    </Link>
+    to make a request
+  </p>
+</div>
+`;
+
+exports[`Testing Table component should render as expected 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th>
+        Title
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        Status
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    id="table-body"
+  >
+    <TableRow
+      key="1"
+      request={
+        Object {
+          "id": 1,
+          "status": "pending",
+          "title": "title",
+          "type": "repair",
+        }
+      }
+      statusColor={
+        Object {
+          "pending": "yellow",
+        }
+      }
+      statusMessage={
+        Object {
+          "pending": "pending",
+        }
+      }
+    />
+  </tbody>
+</table>
+`;
+
+exports[`Testing TableRow component should render as expected 1`] = `
+<tr>
+  <td
+    className="dark-blue table-link"
+  >
+    <Link
+      replace={false}
+      to="/users/requests/1"
+    >
+      title
+    </Link>
+  </td>
+  <td>
+    repair
+  </td>
+  <td
+    className="yellow"
+  >
+    pending
+  </td>
+</tr>
+`;

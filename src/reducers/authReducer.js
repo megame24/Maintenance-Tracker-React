@@ -1,6 +1,6 @@
 import types from '../actions/actionTypes';
 
-const { SIGN_UP, PERSIST_LOGIN, LOGIN } = types;
+const { SIGN_UP, PERSIST_LOGIN, LOGIN, CLEAR_ERRORS } = types;
 
 export const initialState = {
   isLoading: false,
@@ -15,6 +15,15 @@ export const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+  case CLEAR_ERRORS:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+    };
   case types.LOGOUT:
     return {
       ...state,

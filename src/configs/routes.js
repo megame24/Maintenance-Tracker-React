@@ -7,7 +7,7 @@ import requestPages from '../views/request';
 
 const { GuestRoute, UserRoute } = routes;
 const { Signup, Login } = authPages;
-const { CreateRequest } = requestPages;
+const { CreateRequest, ViewRequests } = requestPages;
 
 export default [
   {
@@ -36,8 +36,20 @@ export default [
   },
   {
     type: UserRoute,
-    path: '/create-request',
+    path: '/users/requests/create',
     component: CreateRequest,
+    exact: true,
+  },
+  {
+    type: UserRoute,
+    path: '/users/requests/all',
+    component: ViewRequests,
+    exact: true,
+  },
+  {
+    type: Route,
+    path: '*',
+    component: Home,
     exact: true,
   },
 ];

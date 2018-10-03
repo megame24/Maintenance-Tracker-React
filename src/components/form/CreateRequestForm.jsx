@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Dimmer, Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
+import Loading from '../Loading';
+import ErrorMessage from '../ErrorMessage';
 
 const CreateRequestForm = (props) => {
   const {
@@ -10,21 +11,9 @@ const CreateRequestForm = (props) => {
   } = props;
   return (
     <section id="make-request" className="min-height">
-      <Dimmer
-        page
-        active={isLoading}
-      >
-        <Loader size="medium" />
-      </Dimmer>
+      <Loading isLoading={isLoading} />
       <div className="container">
-        {
-          errors.message
-          && (
-            <div className="message error-message">
-              {errors.message}
-            </div>
-          )
-        }
+        <ErrorMessage errors={errors} />
         <div className="make-edit-request">
           <h2>Make a new request</h2>
           <hr />

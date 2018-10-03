@@ -17,6 +17,7 @@ describe("The Signup component", () => {
 
   describe("Testing component methods", () => {
     const props = {
+      clearErrors: () => {},
       signup: () => {},
       isLoading: false,
       errors: {

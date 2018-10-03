@@ -5,22 +5,19 @@ exports[`testing CreateRequestForm component should render as expected when succ
   className="min-height"
   id="make-request"
 >
-  <Dimmer
-    active={false}
-    page={true}
-  >
-    <Loader
-      size="medium"
-    />
-  </Dimmer>
+  <Loading
+    isLoading={false}
+  />
   <div
     className="container"
   >
-    <div
-      className="message error-message"
-    >
-      error
-    </div>
+    <ErrorMessage
+      errors={
+        Object {
+          "message": "error",
+        }
+      }
+    />
     <div
       className="make-edit-request"
     >
@@ -109,22 +106,19 @@ exports[`testing CreateRequestForm component should render as expected when ther
   className="min-height"
   id="make-request"
 >
-  <Dimmer
-    active={false}
-    page={true}
-  >
-    <Loader
-      size="medium"
-    />
-  </Dimmer>
+  <Loading
+    isLoading={false}
+  />
   <div
     className="container"
   >
-    <div
-      className="message error-message"
-    >
-      error
-    </div>
+    <ErrorMessage
+      errors={
+        Object {
+          "message": "error",
+        }
+      }
+    />
     <div
       className="make-edit-request"
     >
@@ -209,17 +203,15 @@ exports[`testing CreateRequestForm component should render as expected when ther
   className="min-height"
   id="make-request"
 >
-  <Dimmer
-    active={false}
-    page={true}
-  >
-    <Loader
-      size="medium"
-    />
-  </Dimmer>
+  <Loading
+    isLoading={false}
+  />
   <div
     className="container"
   >
+    <ErrorMessage
+      errors={Object {}}
+    />
     <div
       className="make-edit-request"
     >

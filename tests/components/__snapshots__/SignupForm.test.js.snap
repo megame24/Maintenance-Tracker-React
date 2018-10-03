@@ -4,22 +4,19 @@ exports[`testing SignupForm component should render as expected when there is an
 <section
   id="register"
 >
-  <Dimmer
-    active={false}
-    page={true}
-  >
-    <Loader
-      size="medium"
-    />
-  </Dimmer>
+  <Loading
+    isLoading={false}
+  />
   <div
     className="container"
   >
-    <div
-      className="message error-message"
-    >
-      error
-    </div>
+    <ErrorMessage
+      errors={
+        Object {
+          "message": "error",
+        }
+      }
+    />
     <div
       className="form"
     >
@@ -112,17 +109,15 @@ exports[`testing SignupForm component should render as expected when there is no
 <section
   id="register"
 >
-  <Dimmer
-    active={false}
-    page={true}
-  >
-    <Loader
-      size="medium"
-    />
-  </Dimmer>
+  <Loading
+    isLoading={false}
+  />
   <div
     className="container"
   >
+    <ErrorMessage
+      errors={Object {}}
+    />
     <div
       className="form"
     >

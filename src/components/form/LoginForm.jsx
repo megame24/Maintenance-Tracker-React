@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Dimmer, Loader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
+import ErrorMessage from '../ErrorMessage';
 
 const LoginForm = (props) => {
   const {
@@ -10,21 +11,9 @@ const LoginForm = (props) => {
   } = props;
   return (
     <section id="login">
-      <Dimmer
-        page
-        active={isLoading}
-      >
-        <Loader size="medium" />
-      </Dimmer>
+      <Loading isLoading={isLoading} />
       <div className="container">
-        {
-          errors.message
-          && (
-            <div className="message error-message">
-              {errors.message}
-            </div>
-          )
-        }
+        <ErrorMessage errors={errors} />
         <div className="form">
           <div className="form-icon-container">
             <div className="center form-icon blue">

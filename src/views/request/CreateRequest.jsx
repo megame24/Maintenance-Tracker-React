@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import requestActions from '../../actions/requestActions';
 import CreateRequestForm from '../../components/form/CreateRequestForm';
+import generalActions from '../../actions/generalActions';
 
 /**
  * CreateRequest Component
@@ -29,8 +30,11 @@ export class CreateRequest extends React.Component {
    * @returns {undefined}
    */
   componentWillUnmount() {
-    const { resetCreateReqSucc, success } = this.props;
+    const {
+      resetCreateReqSucc, success, errors, clearErrors,
+    } = this.props;
     if (success) resetCreateReqSucc();
+    if (errors.message) clearErrors();
   }
 
   /**
@@ -85,6 +89,7 @@ export class CreateRequest extends React.Component {
 }
 
 CreateRequest.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   createRequest: PropTypes.func.isRequired,
   resetCreateReqSucc: PropTypes.func.isRequired,
   errors: PropTypes.shape({
@@ -99,7 +104,7 @@ CreateRequest.defaultProps = {
 };
 
 export const mapStateToProps = (state) => {
-  const { errors, isLoading, success } = state.request;
+  const { errors, isLoading, success } = state.createRequest;
   return {
     errors,
     isLoading,
@@ -110,4 +115,5 @@ export const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   createRequest: requestActions.createRequest,
   resetCreateReqSucc: requestActions.resetCreateReqSucc,
+  clearErrors: generalActions.clearErrors,
 })(CreateRequest);

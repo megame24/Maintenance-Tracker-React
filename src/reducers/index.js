@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import auth from './authReducer';
-import request from './requestReducer';
+import { createRequest, userRequests } from './requestReducer';
 
 export default combineReducers({
   auth,
-  request,
+  createRequest,
+  userRequests,
 });
