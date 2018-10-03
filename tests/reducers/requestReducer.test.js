@@ -1,6 +1,7 @@
 import {
   createRequest, initialCreateReqState,
   userRequests, initialUserReqsState,
+  request, initialRequestState
 } from '../../src/reducers/requestReducer';
 import types from '../../src/actions/actionTypes';
 
@@ -98,5 +99,47 @@ describe('Testing userRequests', () => {
     const action = { type: types.CLEAR_ERRORS};
     const state = userRequests(initialUserReqsState, action);
     expect(state.errors.message).toEqual('');
+  });
+});
+
+describe('Testing request', () => {
+  it('should return the initial state if no action type is passed', () => {
+    const state = request(initialRequestState);
+    expect(state).toEqual(initialRequestState);
+  });
+  it('should return the initial state if no initial state is passed', () => {
+    const state = request();
+    expect(state).toEqual(initialRequestState);
+  });
+  it('should return the initial state if no invalid action type is passed', () => {
+    const state = request(initialRequestState, { type: 'INVALID' });
+    expect(state).toEqual(initialRequestState);
+  });
+  it('should should store the requests on success', () => {
+    const action = {
+      type: `${types.GET_REQUEST}_SUCCESS`,
+      payload: {
+        data: {
+          title: 'yo',
+        }
+      }
+    }
+    const state = request(initialRequestState, action);
+    expect(state.request).toEqual(action.payload.data);
+  });
+  it('should set isLoading to true on loading', () => {
+    const action = { type: `${types.GET_REQUEST}_LOADING`};
+    const state = request(initialRequestState, action);
+    expect(state.isLoading).toEqual(true);
+  });
+  it('should save an error message to the state on failure', () => {
+    const action = {
+      type: `${types.GET_REQUEST}_FAILURE`,
+      payload: {
+        message: 'ERROR!!'
+      }
+    }
+    const state = request(initialRequestState, action);
+    expect(state.errors.message).toEqual(action.payload.message);
   });
 });

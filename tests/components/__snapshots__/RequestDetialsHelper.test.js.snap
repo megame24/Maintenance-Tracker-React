@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AdminFeedbackAndCtrlBtns component should render as expected 1`] = `
+<div>
+  <h4>
+    Feedback from an admin
+  </h4>
+  <div
+    className="feedback"
+  >
+    <p />
+  </div>
+  <span>
+    <Link
+      className="btn btn-tertiary"
+      replace={false}
+      to="/users/requests/edit/1"
+    >
+      Edit 
+      <i
+        className="icon ion-edit"
+      />
+    </Link>
+      
+  </span>
+  <a
+    className="btn btn-danger"
+    id="delete"
+  >
+    Delete 
+    <i
+      className="icon ion-android-delete"
+    />
+  </a>
+</div>
+`;
+
+exports[`Testing RequestDetail component should render as expected 1`] = `
+<div
+  className="request-detail"
+>
+  <h2>
+    title
+  </h2>
+  <p />
+  <p>
+    <strong>
+      Request date:
+    </strong>
+     
+    Invalid Date
+  </p>
+  <div
+    className="status yellow"
+  >
+    pending
+  </div>
+  <div
+    className="request-type"
+  >
+    repair
+  </div>
+</div>
+`;

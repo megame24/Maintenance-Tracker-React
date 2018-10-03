@@ -2,7 +2,7 @@ import types from '../actions/actionTypes';
 
 const {
   CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
-  CLEAR_ERRORS,
+  CLEAR_ERRORS, GET_REQUEST,
 } = types;
 
 export const initialCreateReqState = {
@@ -15,7 +15,6 @@ export const initialCreateReqState = {
   success: false,
 };
 
-
 export const initialUserReqsState = {
   isLoading: false,
   errors: {
@@ -24,6 +23,16 @@ export const initialUserReqsState = {
     response: {},
   },
   requests: [],
+};
+
+export const initialRequestState = {
+  isLoading: false,
+  errors: {
+    statusCode: 0,
+    message: '',
+    response: {},
+  },
+  requests: {},
 };
 
 export const createRequest = (state = initialCreateReqState, action = {}) => {
@@ -100,6 +109,37 @@ export const userRequests = (state = initialUserReqsState, action = {}) => {
       requests: action.payload.data,
     };
   case `${GET_USER_REQUESTS}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  default:
+    return state;
+  }
+};
+export const request = (state = initialRequestState, action = {}) => {
+  switch (action.type) {
+  case `${GET_REQUEST}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${GET_REQUEST}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      request: action.payload.data,
+    };
+  case `${GET_REQUEST}_FAILURE`:
     return {
       ...state,
       isLoading: false,
