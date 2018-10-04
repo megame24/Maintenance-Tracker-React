@@ -78,7 +78,7 @@ export class UserRequestDetails extends React.Component {
     } = this.props;
     const { statusColor, statusMessage } = this.state;
     return (
-      <section className="user-request-detail min-height admin-request-detail">
+      <section className="user-request-detail min-height">
         <Loading isLoading={isLoading || isLoadingDelete} />
         <div className="container">
           {

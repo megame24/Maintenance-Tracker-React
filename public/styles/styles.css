@@ -454,7 +454,10 @@ tbody tr:nth-child(odd) {
      ============= */
 
 footer {
-  padding: 30px 0;
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 25px 0;
   text-align: center;
   background-color: rgb(226, 226, 226);
 }
@@ -788,4 +791,13 @@ footer a {
 .disable-highlight {
   cursor: not-allowed;
   background-color: #c6dafc;
+}
+
+#react-container {
+  min-height:100vh;
+  position:relative;
+}
+
+main {
+  padding-bottom: 70px;
 }

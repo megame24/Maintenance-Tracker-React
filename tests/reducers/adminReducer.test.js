@@ -1,5 +1,6 @@
 import {
-  allRequests, reqResolution, initialAllReqsState, initialReqResolutionState
+  allRequests, reqResolution, initialAllReqsState, initialReqResolutionState,
+  trashRequest, initialTrashReqState
 } from '../../src/reducers/adminReducer';
 import types from '../../src/actions/actionTypes';
 
@@ -79,7 +80,7 @@ describe('Testing reqResolution', () => {
     const state = reqResolution(initialReqResolutionState, action);
     expect(state.success).toEqual(true);
   });
-  it('should set isLoading to true when LOGIN_LOADING is dispatched', () => {
+  it('should set isLoading to true on loading', () => {
     const action = { type: `${types.RESOLVE_REQUEST}_LOADING`};
     const state = reqResolution(initialReqResolutionState, action);
     expect(state.isLoading).toEqual(true);
@@ -92,6 +93,55 @@ describe('Testing reqResolution', () => {
       }
     }
     const state = reqResolution(initialReqResolutionState, action);
+    expect(state.errors.message).toEqual(action.payload.message);
+  });
+});
+
+describe('Testing trashRequest', () => {
+  it('should return the initial state if no action type is passed', () => {
+    const state = trashRequest(initialTrashReqState);
+    expect(state).toEqual(initialTrashReqState);
+  });
+  it('should return the initial state if no initial state is passed', () => {
+    const state = trashRequest();
+    expect(state).toEqual(initialTrashReqState);
+  });
+  it('should return the initial state if no invalid action type is passed', () => {
+    const state = trashRequest(initialTrashReqState, { type: 'INVALID' });
+    expect(state).toEqual(initialTrashReqState);
+  });
+  it('should set success to false when RESET_SUCCESS is dispatched', () => {
+    const action = {
+      type: types.RESET_SUCCESS,
+    }
+    const state = trashRequest(initialTrashReqState, action);
+    expect(state.success).toEqual(false);
+  });
+  it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
+    const action = { type: types.CLEAR_ERRORS};
+    const state = trashRequest(initialTrashReqState, action);
+    expect(state.errors.message).toEqual('');
+  });
+  it('should set success to true on create request success', () => {
+    const action = {
+      type: `${types.TRASH_REQUEST}_SUCCESS`,
+    }
+    const state = trashRequest(initialTrashReqState, action);
+    expect(state.success).toEqual(true);
+  });
+  it('should set isLoading to true on loading', () => {
+    const action = { type: `${types.TRASH_REQUEST}_LOADING`};
+    const state = trashRequest(initialTrashReqState, action);
+    expect(state.isLoading).toEqual(true);
+  });
+  it('should save an error message to the state on failure', () => {
+    const action = {
+      type: `${types.TRASH_REQUEST}_FAILURE`,
+      payload: {
+        message: 'ERROR!!'
+      }
+    }
+    const state = trashRequest(initialTrashReqState, action);
     expect(state.errors.message).toEqual(action.payload.message);
   });
 });

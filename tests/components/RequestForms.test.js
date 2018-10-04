@@ -48,6 +48,7 @@ describe('testing EditRequestForm component', () => {
     type: 'type',
     success: false,
     isLoading: false,
+    formType: 'edit',
     errors: {},
   }
   it('should render as expected when there is no error', () => {

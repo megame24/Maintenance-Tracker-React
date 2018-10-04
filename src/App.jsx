@@ -5,9 +5,9 @@ import Main from './views/Main';
 import Footer from './components/Footer';
 
 const App = () => (
-  <div>
+  <div id="react-container">
     <Route component={Nav} />
-    <Main />
+    <Main id="react-body" />
     <Footer />
   </div>
 );

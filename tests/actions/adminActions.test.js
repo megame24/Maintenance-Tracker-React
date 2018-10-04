@@ -30,4 +30,18 @@ describe('Testing adminActions', () => {
       payload: 'put',
     })
   });
+  it('should dispatch DISAPPROVE_REQUEST when getRequestForAdmin is called', () => {
+    const action = adminActions.getRequestForAdmin();
+    expect(action).toEqual({
+      type: types.GET_REQUEST_FOR_ADMIN,
+      payload: 'get',
+    })
+  });
+  it('should dispatch RESOLVE_REQUEST when trashRequest is called', () => {
+    const action = adminActions.trashRequest();
+    expect(action).toEqual({
+      type: types.TRASH_REQUEST,
+      payload: 'delete',
+    })
+  });
 });

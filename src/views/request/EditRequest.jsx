@@ -74,6 +74,7 @@ export class EditRequest extends React.Component {
     } = this.props;
     return (
       <EditRequestForm
+        formType="edit"
         title={title}
         description={description}
         type={type}

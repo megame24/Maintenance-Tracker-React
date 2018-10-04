@@ -36,6 +36,39 @@ exports[`Testing AdminFeedbackAndCtrlBtns component should render as expected 1`
 </div>
 `;
 
+exports[`Testing AdminWorkPlace component should render as expected 1`] = `
+<div>
+  <div>
+    <label
+      htmlFor="feedback"
+    >
+      Provide feedback
+    </label>
+    <textarea
+      className="form-input"
+      id="feedback"
+      name="feedback"
+      onChange={[Function]}
+      value="feedback"
+    />
+    <input
+      className="btn btn-primary form-input"
+      id="approve"
+      onClick={[Function]}
+      type="submit"
+      value="Approve"
+    />
+    <input
+      className="btn btn-danger form-input"
+      id="disapprove"
+      onClick={[Function]}
+      type="submit"
+      value="Disapprove"
+    />
+  </div>
+</div>
+`;
+
 exports[`Testing RequestDetail component should render as expected 1`] = `
 <div
   className="request-detail"

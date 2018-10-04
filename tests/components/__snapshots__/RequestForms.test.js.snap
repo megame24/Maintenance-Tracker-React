@@ -97,6 +97,7 @@ exports[`testing CreateRequestForm component should render as expected when succ
       <hr />
       <RequestForm
         description="des"
+        formType="create"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"
@@ -138,6 +139,7 @@ exports[`testing CreateRequestForm component should render as expected when ther
       <hr />
       <RequestForm
         description="des"
+        formType="create"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"
@@ -171,6 +173,7 @@ exports[`testing CreateRequestForm component should render as expected when ther
       <hr />
       <RequestForm
         description="des"
+        formType="create"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"
@@ -208,6 +211,7 @@ exports[`testing EditRequestForm component should render as expected when succes
       <hr />
       <RequestForm
         description="des"
+        formType="edit"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"
@@ -249,6 +253,7 @@ exports[`testing EditRequestForm component should render as expected when there 
       <hr />
       <RequestForm
         description="des"
+        formType="edit"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"
@@ -282,6 +287,7 @@ exports[`testing EditRequestForm component should render as expected when there 
       <hr />
       <RequestForm
         description="des"
+        formType="edit"
         handleChange={[Function]}
         handleSubmit={[Function]}
         title="title"

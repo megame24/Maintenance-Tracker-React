@@ -144,6 +144,33 @@ describe('Testing request', () => {
     const state = request(initialRequestState, action);
     expect(state.errors.message).toEqual(action.payload.message);
   });
+  it('should should store the requests on success', () => {
+    const action = {
+      type: `${types.GET_REQUEST_FOR_ADMIN}_SUCCESS`,
+      payload: {
+        data: {
+          title: 'yo',
+        }
+      }
+    }
+    const state = request(initialRequestState, action);
+    expect(state.request).toEqual(action.payload.data);
+  });
+  it('should set isLoading to true on loading', () => {
+    const action = { type: `${types.GET_REQUEST_FOR_ADMIN}_LOADING`};
+    const state = request(initialRequestState, action);
+    expect(state.isLoading).toEqual(true);
+  });
+  it('should save an error message to the state on failure', () => {
+    const action = {
+      type: `${types.GET_REQUEST_FOR_ADMIN}_FAILURE`,
+      payload: {
+        message: 'ERROR!!'
+      }
+    }
+    const state = request(initialRequestState, action);
+    expect(state.errors.message).toEqual(action.payload.message);
+  });
   it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
     const action = { type: types.CLEAR_ERRORS};
     const state = request(initialRequestState, action);

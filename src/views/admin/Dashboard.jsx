@@ -60,7 +60,7 @@ export class Dashboard extends React.Component {
    */
   approveRequest(id) {
     const { approveRequest } = this.props;
-    return approveRequest(id, 'approve');
+    return approveRequest(id, { status: 'approve' });
   }
 
   /**
@@ -70,7 +70,7 @@ export class Dashboard extends React.Component {
    */
   disapproveRequest(id) {
     const { disapproveRequest } = this.props;
-    return disapproveRequest(id, 'disapprove');
+    return disapproveRequest(id, { status: 'disapprove' });
   }
 
   /**
@@ -80,7 +80,7 @@ export class Dashboard extends React.Component {
    */
   resolveRequest(id) {
     const { resolveRequest } = this.props;
-    return resolveRequest(id, 'resolve');
+    return resolveRequest(id, { status: 'resolve' });
   }
 
   /**

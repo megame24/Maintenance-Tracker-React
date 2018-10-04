@@ -6,7 +6,7 @@ import ErrorMessage from '../ErrorMessage';
 
 export const RequestForm = ({
   handleSubmit, title, description, type,
-  handleChange,
+  handleChange, formType,
 }) => (
   <form id="make-request-form" onSubmit={handleSubmit}>
     <label htmlFor="title"> Request title</label>
@@ -58,13 +58,14 @@ export const RequestForm = ({
     <input
       type="submit"
       id="submit-btn"
-      value="Make Request"
+      value={formType === 'edit' ? 'Edit Request' : 'Make Request'}
       className="form-input btn btn-primary"
     />
   </form>
 );
 
 RequestForm.propTypes = {
+  formType: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   title: PropTypes.string,
@@ -76,6 +77,7 @@ RequestForm.defaultProps = {
   title: '',
   description: '',
   type: 'repair',
+  formType: 'create'
 };
 
 export const CreateRequestForm = (props) => {
@@ -127,7 +129,8 @@ CreateRequestForm.defaultProps = {
 export const EditRequestForm = (props) => {
   const {
     handleSubmit, title, description, type,
-    handleChange, isLoading, errors, success
+    handleChange, isLoading, errors, success,
+    formType,
   } = props;
   return (
     <section id="make-request" className="min-height">
@@ -138,6 +141,7 @@ export const EditRequestForm = (props) => {
           <h2>Make a new request</h2>
           <hr />
           <RequestForm
+            formType={formType}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             title={title}
@@ -154,6 +158,7 @@ export const EditRequestForm = (props) => {
 };
 
 EditRequestForm.propTypes = {
+  formType: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   title: PropTypes.string,

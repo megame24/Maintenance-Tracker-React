@@ -2,7 +2,7 @@ import types from '../actions/actionTypes';
 
 const {
   GET_ALL_REQUESTS_FOR_ADMIN, CLEAR_ERRORS, APPROVE_REQUEST,
-  DISAPPROVE_REQUEST, RESOLVE_REQUEST, RESET_SUCCESS,
+  DISAPPROVE_REQUEST, RESOLVE_REQUEST, RESET_SUCCESS, TRASH_REQUEST,
 } = types;
 
 export const initialAllReqsState = {
@@ -16,6 +16,16 @@ export const initialAllReqsState = {
 };
 
 export const initialReqResolutionState = {
+  isLoading: false,
+  errors: {
+    statusCode: 0,
+    message: '',
+    response: {},
+  },
+  success: false,
+};
+
+export const initialTrashReqState = {
   isLoading: false,
   errors: {
     statusCode: 0,
@@ -65,6 +75,53 @@ export const allRequests = (state = initialAllReqsState, action = {}) => {
     return state;
   }
 };
+
+export const trashRequest = (state = initialTrashReqState, action = {}) => {
+  switch (action.type) {
+  case CLEAR_ERRORS:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+    };
+  case RESET_SUCCESS:
+    return {
+      ...state,
+      success: false,
+    };
+  case `${TRASH_REQUEST}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${TRASH_REQUEST}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      success: true,
+    };
+  case `${TRASH_REQUEST}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  default:
+    return state;
+  }
+};
+
 
 export const reqResolution = (state = initialReqResolutionState, action = {
 }) => {

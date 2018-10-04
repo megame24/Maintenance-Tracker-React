@@ -12,7 +12,7 @@ const {
   CreateRequest, ViewRequests, UserRequestDetails,
   EditRequest
 } = requestPages;
-const { Dashboard } = AdminPages;
+const { Dashboard, AdminRequestDetails, } = AdminPages;
 
 export default [
   {
@@ -67,6 +67,12 @@ export default [
     type: AdminRoute,
     path: '/admin/dashboard',
     component: Dashboard,
+    exact: true,
+  },
+  {
+    type: AdminRoute,
+    path: '/admin/requests/:id',
+    component: AdminRequestDetails,
     exact: true,
   },
   {

@@ -3,7 +3,7 @@ import types from '../actions/actionTypes';
 const {
   CREATE_REQUEST, RESET_SUCCESS, GET_USER_REQUESTS,
   CLEAR_ERRORS, GET_REQUEST, EDIT_REQUEST,
-  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST,
+  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST, GET_REQUEST_FOR_ADMIN,
 } = types;
 
 export const initialCreateReqState = {
@@ -250,6 +250,31 @@ export const request = (state = initialRequestState, action = {}) => {
       request: action.payload.data,
     };
   case `${GET_REQUEST}_FAILURE`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        statusCode: action.payload.statusCode,
+        message: action.payload.message,
+        response: action.payload.response,
+      }
+    };
+  case `${GET_REQUEST_FOR_ADMIN}_LOADING`:
+    return {
+      ...state,
+      isLoading: true,
+    };
+  case `${GET_REQUEST_FOR_ADMIN}_SUCCESS`:
+    return {
+      ...state,
+      isLoading: false,
+      errors: {
+        message: '',
+        response: {},
+      },
+      request: action.payload.data,
+    };
+  case `${GET_REQUEST_FOR_ADMIN}_FAILURE`:
     return {
       ...state,
       isLoading: false,
