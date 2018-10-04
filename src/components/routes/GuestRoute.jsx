@@ -11,7 +11,7 @@ export const GuestRoute = ({
     render={
       props => (
         !token ? <Component {...props} />
-          : <Redirect to="/" />
+          : <Redirect to="/admin/dashboard" />
       )}
   />
 );

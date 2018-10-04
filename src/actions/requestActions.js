@@ -2,9 +2,9 @@ import axiosInstance from '../services/axiosInstance';
 import types from './actionTypes';
 
 const {
-  CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
-  GET_REQUEST, EDIT_REQUEST, RESET_EDIT_REQ_SUCC,
-  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST, RESET_DELETE_REQ_SUCC,
+  CREATE_REQUEST, GET_USER_REQUESTS,
+  GET_REQUEST, EDIT_REQUEST,
+  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST,
 } = types;
 
 const createRequest = formData => ({
@@ -15,18 +15,6 @@ const createRequest = formData => ({
 const editRequest = (id, formData) => ({
   type: EDIT_REQUEST,
   payload: axiosInstance().put(`/users/requests/${id}`, formData),
-});
-
-const resetCreateReqSucc = () => ({
-  type: RESET_CREATE_REQ_SUCC,
-});
-
-const resetEditReqSucc = () => ({
-  type: RESET_EDIT_REQ_SUCC,
-});
-
-const resetDeleteReqSucc = () => ({
-  type: RESET_DELETE_REQ_SUCC,
 });
 
 const getUserRequests = () => ({
@@ -51,12 +39,9 @@ const deleteRequest = id => ({
 
 export default {
   createRequest,
-  resetCreateReqSucc,
   getUserRequests,
   getRequest,
   editRequest,
-  resetEditReqSucc,
   handleEditInputChange,
   deleteRequest,
-  resetDeleteReqSucc,
 };

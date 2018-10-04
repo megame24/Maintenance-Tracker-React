@@ -79,7 +79,7 @@ export const AdminNav = ({
         </a>
       </div>
       <div className={`drop-down-menu ${dropDown.admin}`}>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/admin/dashboard">Dashboard</Link>
         <a id="logout" onClick={logout}>Logout</a>
       </div>
     </li>

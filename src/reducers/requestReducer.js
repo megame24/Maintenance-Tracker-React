@@ -1,9 +1,9 @@
 import types from '../actions/actionTypes';
 
 const {
-  CREATE_REQUEST, RESET_CREATE_REQ_SUCC, GET_USER_REQUESTS,
-  CLEAR_ERRORS, GET_REQUEST, RESET_EDIT_REQ_SUCC, EDIT_REQUEST,
-  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST, RESET_DELETE_REQ_SUCC
+  CREATE_REQUEST, RESET_SUCCESS, GET_USER_REQUESTS,
+  CLEAR_ERRORS, GET_REQUEST, EDIT_REQUEST,
+  EDIT_INPUT_ON_CHANGE, DELETE_REQUEST,
 } = types;
 
 export const initialCreateReqState = {
@@ -68,7 +68,7 @@ export const createRequest = (state = initialCreateReqState, action = {}) => {
         response: {},
       },
     };
-  case RESET_CREATE_REQ_SUCC:
+  case RESET_SUCCESS:
     return {
       ...state,
       success: false,
@@ -114,7 +114,7 @@ export const editRequest = (state = initialEditReqState, action = {}) => {
         response: {},
       },
     };
-  case RESET_EDIT_REQ_SUCC:
+  case RESET_SUCCESS:
     return {
       ...state,
       success: false,
@@ -275,7 +275,7 @@ export const deleteRequest = (state = initialDeleteReqState, action = {}) => {
         response: {},
       },
     };
-  case RESET_DELETE_REQ_SUCC:
+  case RESET_SUCCESS:
     return {
       ...state,
       success: false,

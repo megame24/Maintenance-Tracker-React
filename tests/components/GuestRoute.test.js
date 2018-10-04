@@ -1,6 +1,6 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
-import { Router, Redirect } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import { GuestRoute, mapStateToProps } from '../../src/components/routes/GuestRoute.jsx';
 
@@ -18,7 +18,6 @@ describe('The Guest Route component', () => {
   });
   describe('Testing Guest Route component itself', () => {
     it('should render a passed in component if there is no token', () => {
-      // auth.token = '';
       state.auth.token = '';
       const Comp = () => (
         <p>hello</p>

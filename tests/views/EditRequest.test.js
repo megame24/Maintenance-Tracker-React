@@ -22,7 +22,7 @@ describe("The EditRequest component", () => {
       handleEditInputChange: () => 'handleEditInputChange was called',
       editRequest: () => 'editRequest was called',
       getRequest: () => {},
-      resetEditReqSucc: () => {},
+      resetSuccess: () => {},
       request: {
         title: 'title',
         description: 'des',

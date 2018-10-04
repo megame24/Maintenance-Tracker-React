@@ -51,10 +51,10 @@ export class UserRequestDetails extends React.Component {
    */
   componentWillUnmount() {
     const {
-      resetDeleteReqSucc, deleteSuccess, errors, clearErrors,
+      resetSuccess, deleteSuccess, errors, clearErrors,
       deleteErrors,
     } = this.props;
-    if (deleteSuccess) resetDeleteReqSucc();
+    if (deleteSuccess) resetSuccess();
     if (errors.message || deleteErrors.message) clearErrors();
   }
 
@@ -133,7 +133,7 @@ UserRequestDetails.propTypes = {
   }),
   getRequest: PropTypes.func.isRequired,
   deleteRequest: PropTypes.func.isRequired,
-  resetDeleteReqSucc: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
 };
 
@@ -161,6 +161,6 @@ export const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getRequest: requestActions.getRequest,
   deleteRequest: requestActions.deleteRequest,
-  resetDeleteReqSucc: requestActions.resetDeleteReqSucc,
+  resetSuccess: generalActions.resetSuccess,
   clearErrors: generalActions.clearErrors,
 })(UserRequestDetails);

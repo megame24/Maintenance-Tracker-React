@@ -1,6 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Banner component should render as expected 1`] = `
+exports[`Testing Banner component should render as expected when there is a token 1`] = `
+<div
+  className="hero"
+>
+  <div
+    className="text container"
+  >
+    <h1>
+      Use,
+      <br />
+      Maintain,
+      <br />
+      Repair,
+      <br />
+      Repeat.
+      <br />
+    </h1>
+    <p>
+      We take care of your maintenance and repair hassles, so you don't have to.
+    </p>
+    <Link
+      className="btn btn-tertiary get-started"
+      replace={false}
+      to="/admin/dashboard"
+    >
+      Get started
+    </Link>
+  </div>
+</div>
+`;
+
+exports[`Testing Banner component should render as expected when there is no token 1`] = `
 <div
   className="hero"
 >
@@ -78,7 +109,22 @@ exports[`Testing HomeBody component should render as expected 1`] = `
 </div>
 `;
 
-exports[`Testing HomeFooter component should render as expected 1`] = `
+exports[`Testing HomeFooter component should render as expected when there is a token 1`] = `
+<p
+  className="center"
+>
+  <Link
+    className="btn btn-small btn-primary get-started"
+    replace={false}
+    to="/admin/dashboard"
+  >
+    Click here
+  </Link>
+    to get started
+</p>
+`;
+
+exports[`Testing HomeFooter component should render as expected when there is no token 1`] = `
 <p
   className="center"
 >

@@ -4,6 +4,9 @@ import {
   createRequest, userRequests, request,
   editRequest, deleteRequest
 } from './requestReducer';
+import {
+  allRequests, reqResolution
+} from './adminReducer';
 
 export default combineReducers({
   auth,
@@ -12,4 +15,6 @@ export default combineReducers({
   request,
   editRequest,
   deleteRequest,
+  allRequests,
+  reqResolution,
 });

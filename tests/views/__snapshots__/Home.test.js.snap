@@ -4,13 +4,17 @@ exports[`Testing Home component should render as expected 1`] = `
 <section
   id="landing"
 >
-  <Banner />
+  <Banner
+    token=""
+  />
   <div
     className="container"
   >
     <HomeBody />
     <hr />
-    <HomeFooter />
+    <HomeFooter
+      token=""
+    />
   </div>
 </section>
 `;

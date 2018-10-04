@@ -1,3 +1,8 @@
 export default {
-  create: data => data,
+  create: () => ({
+    get: () => 'get',
+    put: () => 'put',
+    delete: () => 'delete',
+    post: () => 'post',
+  })
 };

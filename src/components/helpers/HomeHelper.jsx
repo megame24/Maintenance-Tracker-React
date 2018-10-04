@@ -1,7 +1,8 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export const Banner = () => (
+export const Banner = ({ token }) => (
   <div className="hero">
     <div className="text container">
       <h1>
@@ -19,7 +20,7 @@ export const Banner = () => (
         repair hassles, so you don't have to.
       </p>
       <Link
-        to="/signup"
+        to={token ? '/admin/dashboard' : '/signup'}
         className="btn btn-tertiary get-started"
       >
           Get started
@@ -27,6 +28,14 @@ export const Banner = () => (
     </div>
   </div>
 );
+
+Banner.propTypes = {
+  token: PropTypes.string,
+};
+
+Banner.defaultProps = {
+  token: ''
+};
 
 export const HomeBody = () => (
   <div className="how-it-works center">
@@ -63,10 +72,10 @@ export const HomeBody = () => (
   </div>
 );
 
-export const HomeFooter = () => (
+export const HomeFooter = ({ token }) => (
   <p className="center">
     <Link
-      to="/signup"
+      to={token ? '/admin/dashboard' : '/signup'}
       className="btn btn-small btn-primary get-started"
     >
       Click here
@@ -75,5 +84,13 @@ export const HomeFooter = () => (
     to get started
   </p>
 );
+
+HomeFooter.propTypes = {
+  token: PropTypes.string,
+};
+
+HomeFooter.defaultProps = {
+  token: ''
+};
 
 export default {};

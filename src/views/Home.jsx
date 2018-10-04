@@ -1,15 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Banner, HomeBody, HomeFooter } from '../components/helpers/HomeHelper';
 
-const Home = () => (
+export const Home = ({ token }) => (
   <section id="landing">
-    <Banner />
+    <Banner token={token} />
     <div className="container">
       <HomeBody />
       <hr />
-      <HomeFooter />
+      <HomeFooter token={token} />
     </div>
   </section>
 );
 
-export default Home;
+Home.propTypes = {
+  token: PropTypes.string,
+};
+
+Home.defaultProps = {
+  token: ''
+};
+
+export const mapStateToProps = ({
+  auth: { token }
+}) => ({
+  token,
+});
+
+export default connect(mapStateToProps)(Home);

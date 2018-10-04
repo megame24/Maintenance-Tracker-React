@@ -33,7 +33,7 @@ describe("The UserRequestDetails component", () => {
       isLoadingDelete: false,
       deleteSuccess: false,
       deleteRequest: () => 'deleteRequest was called',
-      resetDeleteReqSucc: () => {},
+      resetSuccess: () => {},
       request: {
         title: 'title',
         type: 'repair',
@@ -58,13 +58,11 @@ describe("The UserRequestDetails component", () => {
       });
     });
 
-    describe('Testing component methods', () => {
-      describe('Testing deleteRequest function', () => {
-        it('should call deleteRequest when called', () => {
-          const UserRequestDetailsComponentInstance = UserRequestDetailsComponent().instance();
-          const output = UserRequestDetailsComponentInstance.deleteRequest();
-          expect(output).toEqual('deleteRequest was called');
-        });
+    describe('Testing deleteRequest function', () => {
+      it('should call deleteRequest when called', () => {
+        const UserRequestDetailsComponentInstance = UserRequestDetailsComponent().instance();
+        const output = UserRequestDetailsComponentInstance.deleteRequest();
+        expect(output).toEqual('deleteRequest was called');
       });
     });
   });

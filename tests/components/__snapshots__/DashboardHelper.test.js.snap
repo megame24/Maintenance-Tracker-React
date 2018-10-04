@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ApproveAndDisapproveColumn component should render as expected when request status is approved 1`] = `
+<td>
+  Approved
+</td>
+`;
+
+exports[`Testing ApproveAndDisapproveColumn component should render as expected when request status is disapproved 1`] = `
+<td>
+  Disapproved
+</td>
+`;
+
+exports[`Testing ApproveAndDisapproveColumn component should render as expected when request status is pending 1`] = `
+<td>
+  <span>
+    <a
+      className="approve btn btn-small btn-primary"
+      onClick={[Function]}
+    >
+      Approve
+    </a>
+       
+    <a
+      className="disapprove btn btn-small btn-danger"
+      onClick={[Function]}
+    >
+      Disapprove
+    </a>
+  </span>
+</td>
+`;
+
+exports[`Testing ApproveAndDisapproveColumn component should render as expected when request status is resolved 1`] = `
+<td>
+  Approved
+</td>
+`;
+
+exports[`Testing ResolveColumn component should render as expected when request status is pending 1`] = `
+<td>
+  <a
+    className="resolve btn btn-small btn-success"
+    onClick={[Function]}
+  >
+    Resolve
+  </a>
+</td>
+`;
+
+exports[`Testing ResolveColumn component should render as expected when request status is resolved 1`] = `
+<td>
+  Resolved
+</td>
+`;
+
+exports[`Testing Table component should render as expected 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th>
+        Title
+      </th>
+      <th
+        className="table-not-mobile"
+      >
+        Type
+      </th>
+      <th>
+        Approve / Disapprove
+      </th>
+      <th>
+        Resolve
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    id="table-body"
+  >
+    <tr
+      key="1"
+    >
+      <TitleColumn
+        request={
+          Object {
+            "id": 1,
+            "status": "pending",
+            "title": "title",
+            "type": "repair",
+          }
+        }
+      />
+      <td
+        className="table-not-mobile"
+      >
+        repair
+      </td>
+      <ApproveAndDisapproveColumn
+        approveRequest={[Function]}
+        disapproveRequest={[Function]}
+        request={
+          Object {
+            "id": 1,
+            "status": "pending",
+            "title": "title",
+            "type": "repair",
+          }
+        }
+      />
+      <ResolveColumn
+        request={
+          Object {
+            "id": 1,
+            "status": "pending",
+            "title": "title",
+            "type": "repair",
+          }
+        }
+        resolveRequest={[Function]}
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Testing TitleColumn component should render as expected 1`] = `
+<td
+  className="dark-blue table-link"
+>
+  <Link
+    replace={false}
+    to="/admin/requests/1"
+  >
+    title
+  </Link>
+</td>
+`;

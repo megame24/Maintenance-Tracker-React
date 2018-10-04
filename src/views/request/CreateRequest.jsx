@@ -31,9 +31,9 @@ export class CreateRequest extends React.Component {
    */
   componentWillUnmount() {
     const {
-      resetCreateReqSucc, success, errors, clearErrors,
+      resetSuccess, success, errors, clearErrors,
     } = this.props;
-    if (success) resetCreateReqSucc();
+    if (success) resetSuccess();
     if (errors.message) clearErrors();
   }
 
@@ -91,7 +91,7 @@ export class CreateRequest extends React.Component {
 CreateRequest.propTypes = {
   clearErrors: PropTypes.func.isRequired,
   createRequest: PropTypes.func.isRequired,
-  resetCreateReqSucc: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     statusCode: PropTypes.number
   }),
@@ -114,6 +114,6 @@ export const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   createRequest: requestActions.createRequest,
-  resetCreateReqSucc: requestActions.resetCreateReqSucc,
+  resetSuccess: generalActions.resetSuccess,
   clearErrors: generalActions.clearErrors,
 })(CreateRequest);

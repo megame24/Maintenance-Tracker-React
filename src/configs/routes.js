@@ -4,13 +4,15 @@ import About from '../views/About';
 import authPages from '../views/auth';
 import routes from '../components/routes';
 import requestPages from '../views/request';
+import AdminPages from '../views/admin';
 
-const { GuestRoute, UserRoute } = routes;
+const { GuestRoute, UserRoute, AdminRoute } = routes;
 const { Signup, Login } = authPages;
 const {
   CreateRequest, ViewRequests, UserRequestDetails,
   EditRequest
 } = requestPages;
+const { Dashboard } = AdminPages;
 
 export default [
   {
@@ -59,6 +61,12 @@ export default [
     type: UserRoute,
     path: '/users/requests/:id',
     component: UserRequestDetails,
+    exact: true,
+  },
+  {
+    type: AdminRoute,
+    path: '/admin/dashboard',
+    component: Dashboard,
     exact: true,
   },
   {

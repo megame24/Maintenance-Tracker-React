@@ -35,9 +35,9 @@ export class EditRequest extends React.Component {
    */
   componentWillUnmount() {
     const {
-      resetEditReqSucc, success, errors, clearErrors,
+      resetSuccess, success, errors, clearErrors,
     } = this.props;
-    if (success) resetEditReqSucc();
+    if (success) resetSuccess();
     if (errors.message) clearErrors();
   }
 
@@ -92,7 +92,7 @@ EditRequest.propTypes = {
   clearErrors: PropTypes.func.isRequired,
   editRequest: PropTypes.func.isRequired,
   getRequest: PropTypes.func.isRequired,
-  resetEditReqSucc: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     statusCode: PropTypes.number
   }),
@@ -121,7 +121,7 @@ export const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   editRequest: requestActions.editRequest,
   getRequest: requestActions.getRequest,
-  resetEditReqSucc: requestActions.resetEditReqSucc,
+  resetSuccess: generalActions.resetSuccess,
   clearErrors: generalActions.clearErrors,
   handleEditInputChange: requestActions.handleEditInputChange,
 })(EditRequest);

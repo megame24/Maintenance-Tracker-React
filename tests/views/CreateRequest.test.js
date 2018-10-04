@@ -20,7 +20,7 @@ describe("The CreateRequest component", () => {
     const props = {
       clearErrors: () => {},
       createRequest: () => {},
-      resetCreateReqSucc: () => {},
+      resetSuccess: () => {},
       isLoading: false,
       errors: {
         message: "",

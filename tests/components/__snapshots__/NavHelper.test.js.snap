@@ -30,7 +30,7 @@ exports[`Testing AdminNav component should render as expected 1`] = `
     >
       <Link
         replace={false}
-        to="/dashboard"
+        to="/admin/dashboard"
       >
         Dashboard
       </Link>

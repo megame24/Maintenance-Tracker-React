@@ -27,9 +27,9 @@ describe('Testing createRequest', () => {
     const state = createRequest(initialCreateReqState, action);
     expect(state.success).toEqual(true);
   });
-  it('should set success to false when RESET_CREATE_REQ_SUCC is dispatched', () => {
+  it('should set success to false when RESET_SUCCESS is dispatched', () => {
     const action = {
-      type: types.RESET_CREATE_REQ_SUCC,
+      type: types.RESET_SUCCESS,
     }
     const state = createRequest(initialCreateReqState, action);
     expect(state.success).toEqual(false);
@@ -146,7 +146,7 @@ describe('Testing request', () => {
   });
   it('should reset the errors when CLEAR_ERRORS is dispatched', () => {
     const action = { type: types.CLEAR_ERRORS};
-    const state = deleteRequest(initialDeleteReqState, action);
+    const state = request(initialRequestState, action);
     expect(state.errors.message).toEqual('');
   });
 });
@@ -198,9 +198,9 @@ describe('Testing editRequest', () => {
     const state = editRequest(initialEditReqState, action);
     expect(state.success).toEqual(true);
   });
-  it('should set success to false when RESET_EDIT_REQ_SUCC is dispatched', () => {
+  it('should set success to false when RESET_SUCCESS is dispatched', () => {
     const action = {
-      type: types.RESET_EDIT_REQ_SUCC,
+      type: types.RESET_SUCCESS,
     }
     const state = editRequest(initialEditReqState, action);
     expect(state.success).toEqual(false);
@@ -262,7 +262,7 @@ describe('Testing deleteRequest', () => {
   });
   it('should set success to false when RESET_DELETE_REQ_SUCC is dispatched', () => {
     const action = {
-      type: types.RESET_DELETE_REQ_SUCC,
+      type: types.RESET_SUCCESS,
     }
     const state = deleteRequest(initialDeleteReqState, action);
     expect(state.success).toEqual(false);
