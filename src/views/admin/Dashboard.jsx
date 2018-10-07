@@ -19,6 +19,7 @@ export class Dashboard extends React.Component {
     this.approveRequest = this.approveRequest.bind(this);
     this.disapproveRequest = this.disapproveRequest.bind(this);
     this.resolveRequest = this.resolveRequest.bind(this);
+    this.filterRequests = this.filterRequests.bind(this);
   }
 
   /**
@@ -84,6 +85,16 @@ export class Dashboard extends React.Component {
   }
 
   /**
+   * Resolve request
+   * @param {Object} event event
+   * @returns {undefined}
+   */
+  filterRequests(event) {
+    const { getAllRequests } = this.props;
+    return getAllRequests(event.target.value);
+  }
+
+  /**
    * @return {undefined}
    */
   render() {
@@ -99,6 +110,15 @@ export class Dashboard extends React.Component {
           <ErrorMessage errors={resolutionErrors} />
           <div className="admin-dashboard">
             <h2>Manage requests</h2>
+            <div className="filter right">
+              <span>Filter</span>
+              &nbsp;&nbsp;
+              <select id="filter" onChange={this.filterRequests}>
+                <option value="none">None</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="repair">Repair</option>
+              </select>
+            </div>
             <div className="clearfix" />
             <hr />
             <Table

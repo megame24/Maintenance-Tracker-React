@@ -6,9 +6,9 @@ const {
   RESOLVE_REQUEST, GET_REQUEST_FOR_ADMIN, TRASH_REQUEST,
 } = types;
 
-const getAllRequests = () => ({
+const getAllRequests = filter => ({
   type: GET_ALL_REQUESTS_FOR_ADMIN,
-  payload: axiosInstance().get('/requests'),
+  payload: axiosInstance().get(`/requests?filter=${filter}`),
 });
 
 const approveRequest = (id, data) => ({

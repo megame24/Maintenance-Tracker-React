@@ -38,7 +38,7 @@ describe("The Dashboard component", () => {
         id: 1,
         status: 'pending',
       }],
-      getAllRequests: () => {},
+      getAllRequests: () => 'getAllRequests was called',
       approveRequest: () => 'approveRequest was called',
       disapproveRequest: () => 'disapproveRequest was called',
       resolveRequest: () => 'resolveRequest was called',
@@ -68,6 +68,18 @@ describe("The Dashboard component", () => {
         jest.spyOn(Dashboard.prototype, 'componentDidUpdate');
         DashboardComponent().setProps({resolutionSuccess: true});
         expect(Dashboard.prototype.componentDidUpdate.mock.calls.length).toEqual(1);
+      });
+    });
+    describe('Testing filterRequests function', () => {
+      it('should call getAllRequests when called', () => {
+        const DashboardComponentInstance = DashboardComponent().instance();
+        const event = {
+          target: {
+            value: 'repair'
+          }
+        }
+        const output = DashboardComponentInstance.filterRequests(event);
+        expect(output).toEqual('getAllRequests was called');
       });
     });
     describe('Testing resolveRequest function', () => {
